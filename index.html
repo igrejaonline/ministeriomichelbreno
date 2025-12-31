@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ministério Michel Breno | Portal Oficial</title>
+<meta name="description" content="Seja bem-vindo ao portal oficial do Ministério Michel Breno. Ativação profética, interpretação de sonhos e suporte emocional com princípios bíblicos.">
+<meta name="keywords" content="Ministério Michel Breno, igreja online, escola de profetas, ativação profética, interpretação de sonhos bíblicos, Michel Breno">
+<meta name="author" content="Ministério Michel Breno">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://igrejaonline.github.io/ministeriomichelbreno" />
+
+<link rel="icon" type="image/jpeg" href="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{
+  --azul: #0a3552;
+  --dourado: #d4af37;
+  --branco: #ffffff;
+  --escuro: #050f18;
+  --cinza: #cfcfcf;
+  --vermelho-yt: #FF0000;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+*{
+  margin:0; padding:0; box-sizing:border-box;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body{
+  background: linear-gradient(180deg, var(--escuro), var(--azul));
+  color: var(--branco);
+  line-height: 1.6;
+}
+
+/* HEADER */
+header{
+  position:fixed; top:0; width:100%; z-index:1000;
+  background: rgba(5, 15, 24, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 5%;
+  border-bottom: 1px solid rgba(212, 175, 85, 0.2);
+}
+
+header img{ height: 55px; } /* Ajuste leve para o novo brasão */
+
+.menu-btn{ font-size: 28px; cursor: pointer; color: var(--dourado); }
+
+nav{
+  display: none; position: absolute; top: 65px; left: 0; width: 100%;
+  background: var(--escuro); text-align: center;
+}
+
+nav a{
+  display: block; padding: 18px; text-decoration: none; color: var(--branco);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 1. HERO */
+.hero{
+  margin-top: 65px; 
+  height: 26vh; 
+  width: 100%; 
+  background: radial-gradient(circle at center, var(--azul) 0%, var(--escuro) 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 20px;
+  border-bottom: 2px solid var(--dourado);
+}
+
+.hero h1{ font-size: 2.8rem; color: var(--dourado); letter-spacing: 4px; text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+.hero p{ font-size: 0.9rem; color: var(--cinza); text-transform: uppercase; letter-spacing: 2px; }
+
+/* SEÇÕES */
+section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
+.title{ text-align: center; font-size: 2rem; color: var(--dourado); margin-bottom: 40px; text-transform: uppercase; }
+
+/* PILARES */
+.pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+.pilar-card {
+  background: var(--glass); padding: 20px; border-radius: 12px; text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+.pilar-card strong { color: var(--dourado); display: block; margin-bottom: 5px; }
+
+/* LIDERANÇA COM NEON DOURADO (PRESERVADO) */
+.apostolo-flex { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.apostolo-img {
+  width: 100%; max-width: 350px; height: auto;
+  border-radius: 25px; 
+  border: 2px solid var(--dourado);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+.apostolo-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.3);
+}
+
+/* INSTAGRAM ESTILIZADO */
+.insta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--dourado);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.insta-link:hover { border-bottom-color: var(--dourado); opacity: 0.8; }
+
+/* GRID CARDS */
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.card { 
+    background: var(--glass); border-radius: 15px; overflow: hidden; 
+    border: 1px solid rgba(212,175,55,0.2); text-decoration: none; color: inherit; transition: 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 220px; object-fit: cover; }
+.img-center { object-position: center !important; } 
+
+/* BOTÕES E ÍCONES */
+.btn {
+  width: 100%; max-width: 320px; padding: 16px; border-radius: 50px;
+  text-decoration: none; font-weight: bold; text-align: center; transition: 0.3s;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.btn-gold { border: 2px solid var(--dourado); color: var(--branco); }
+.btn-gold:hover { background: var(--dourado); color: var(--escuro); }
+.btn-yt { background: var(--vermelho-yt); color: white; border: 2px solid var(--vermelho-yt); }
+.btn-wpp { background: #25d366; color: white; border: 2px solid #25d366; }
+
+/* BOTÕES FLUTUANTES PARALLAX */
+.float-btns {
+  position: fixed; bottom: 20px; width: 100%; padding: 0 10px;
+  display: flex; justify-content: space-between; z-index: 1001; pointer-events: none;
+}
+.float-btn {
+  pointer-events: auto; flex: 1; max-width: 170px; margin: 0 5px;
+  font-size: 0.85rem; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.qr-box { text-align: center; margin-top: 40px; }
+.qr-img { width: 180px; border: 8px solid #fff; border-radius: 10px; margin-bottom: 10px; }
+
+footer{
+  background: #000; padding: 40px 20px 100px; text-align: center; font-size: 0.9rem; color: #888;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.footer-socials { margin-bottom: 20px; display: flex; justify-content: center; gap: 25px; }
+.footer-socials a { color: var(--branco); font-size: 1.5rem; transition: 0.3s; }
+.footer-socials a:hover { color: var(--dourado); }
+
+@media(min-width:900px){
+  nav{ display: flex !important; position: static; background: none; width: auto; }
+  nav a{ border: none; padding: 10px 20px; font-size: 0.9rem; }
+  .menu-btn{ display: none; }
+  .hero h1 { font-size: 3.5rem; }
+  .apostolo-flex { flex-direction: row; text-align: left; }
+  .float-btns { padding: 0 50px; bottom: 30px; }
+  .float-btn { max-width: 250px; font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg" alt="Logo Ministério Michel Breno">
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <nav id="menu">
+    <a href="#inicio">Início</a>
+    <a href="#apostolo">Liderança</a>
+    <a href="#sobre">Ministério</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#contato">Participar</a>
+    <a href="#formacao">Treinamentos</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <h1>Ministério Michel Breno</h1>
+  <p>Ativação Profética e Alinhamento Bíblico</p>
+  <span style="color: var(--dourado); margin-top: 8px; font-size: 0.85rem; font-weight: bold;">PORTAL OFICIAL 100% ONLINE</span>
+</section>
+
+<section id="apostolo">
+  <div class="apostolo-flex">
+    <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/apostolo.png" alt="Apóstolo Michel Breno" class="apostolo-img">
+    <div>
+      <h2 class="title" style="text-align: left; margin-bottom: 20px;">Apóstolo Michel Breno</h2>
+      <p style="color: var(--cinza); margin-top: 10px;">
+        Levantado com autoridade apostólica para conduzir o corpo de Cristo à maturidade espiritual e revelação profunda das Escrituras.
+      </p>
+      <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="insta-link">
+        <i class="fab fa-instagram"></i> Bio do Apóstolo: @apostolomichelbreno
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2 class="title">Nossa Missão</h2>
+  <div class="pilares-grid">
+    <div class="pilar-card"><strong>Adoração</strong> Estilo de vida</div>
+    <div class="pilar-card"><strong>Ativação</strong> Despertar dons</div>
+    <div class="pilar-card"><strong>Evangelismo</strong> Alcançar nações</div>
+    <div class="pilar-card"><strong>Comunhão</strong> Família em Cristo</div>
+    <div class="pilar-card"><strong>Discipulado</strong> Maturidade cristã</div>
+  </div>
+  <div style="text-align: center;">
+    <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="insta-link">
+      <i class="fab fa-instagram"></i> Siga o Ministério: @ministeriomichelbreno
+    </a>
+  </div>
+</section>
+
+<section id="agenda">
+  <h2 class="title">Agenda Online</h2>
+  <div class="grid-cards">
+    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="card">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/culto.jpeg" alt="Culto de Celebração" class="img-center">
+      <div class="card-info">
+        <h4>Culto de Celebração</h4>
+        <p>Quarta-feira • 21:00h</p>
+      </div>
+    </a>
+    <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="card">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/profetica.jpeg" alt="Noite Profética" class="img-center">
+      <div class="card-info">
+        <h4>Noite Profética</h4>
+        <p>Sexta-feira • 22:00h</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="contato" style="text-align: center;">
+  <h2 class="title">Conecte-se Conosco</h2>
+  <div class="cta" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+    <a href="https://youtube.com/@apmichelbreno" target="_blank" class="btn btn-yt">
+       <i class="fab fa-youtube"></i> YouTube Oficial
+    </a>
+    <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="btn btn-gold">
+       <i class="fab fa-instagram"></i> Instagram Ministério
+    </a>
+    <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="btn btn-gold">
+       <i class="fab fa-instagram"></i> Instagram Apóstolo
+    </a>
+    <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp">
+       <i class="fab fa-whatsapp"></i> Comunidade de Alinhamento
+    </a>
+  </div>
+</section>
+
+<section id="formacao">
+  <h2 class="title">Treinamentos Online</h2>
+  <div class="grid-cards">
+    <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/despertar_profetico.html" target="_blank" class="card">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/despertar.jpeg" alt="Despertar Profético" class="img-center">
+      <div class="card-info">
+        <h4>Despertar Profético</h4>
+        <p>Acesse o treinamento</p>
+      </div>
+    </a>
+    <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/desvendando_sonhos.html" target="_blank" class="card">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Desvendando os Sonhos" class="img-center">
+      <div class="card-info">
+        <h4>Desvendando os Sonhos</h4>
+        <p>Acesse o treinamento</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="atendimento">
+  <h2 class="title">Cuidado com a Alma</h2>
+  <div class="grid-cards">
+    <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/psicoterapeuta_crista.html" target="_blank" class="card" style="margin: auto; max-width: 800px;">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/eliane-home.jpeg" alt="Eliane Cristina - Psicoterapia Cristã" class="img-center" style="height: 440px;">
+      <div class="card-info">
+        <h4>Psicoterapia Cristã</h4>
+        <p>Com Eliane Cristina</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="qr-box">
+    <h3 style="color: var(--dourado); margin-bottom: 20px;">Semeie no Ministério</h3>
+    <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/qrcode.jpeg" alt="Pix para o Ministério Michel Breno" class="qr-img">
+    <span style="font-weight: bold; display: block;">mapro.brasil@gmail.com</span>
+    <span style="font-size: 0.9rem; margin-top: 8px; display: block;">Sua contribuição sustenta este portal oficial.</span>
+  </div>
+</section>
+
+<div class="float-btns">
+  <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp float-btn">
+    <i class="fab fa-whatsapp"></i> Comunidade
+  </a>
+  <a href="https://youtube.com/@apmichelbreno" target="_blank" class="btn btn-yt float-btn">
+    <i class="fab fa-youtube"></i> Ministrações
+  </a>
+</div>
+
+<footer>
+  <div class="footer-socials">
+    <a href="https://instagram.com/ministeriomichelbreno" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@apmichelbreno" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  © 2025 Ministério Michel Breno<br>
+  Portal Oficial – Uma vida dirigida por propósitos bíblicos.
+</footer>
+
+<script>
+function toggleMenu(){
+  const menu = document.getElementById('menu');
+  if(window.innerWidth < 900) {
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+}
+</script>
+
+</body>
+</html>
