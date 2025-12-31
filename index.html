@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ministério Michel Breno | Portal Oficial</title>
-<meta name="description" content="Seja bem-vindo ao portal oficial do Ministério Michel Breno. Ativação profética, interpretação de sonhos e suporte emocional com princípios bíblicos.">
+<title>Ministério Apostólico Michel Breno | Portal Oficial</title>
+<meta name="description" content="Seja bem-vindo ao portal oficial do Ministério Apostólico Michel Breno. Ativação profética, interpretação de sonhos e suporte emocional com princípios bíblicos.">
 <meta name="keywords" content="Ministério Michel Breno, igreja online, escola de profetas, ativação profética, interpretação de sonhos bíblicos, Michel Breno">
 <meta name="author" content="Ministério Michel Breno">
 <meta name="robots" content="index, follow">
@@ -47,7 +47,7 @@ header{
   border-bottom: 1px solid rgba(212, 175, 85, 0.2);
 }
 
-header img{ height: 55px; } /* Ajuste leve para o novo brasão */
+header img{ height: 55px; }
 
 .menu-btn{ font-size: 28px; cursor: pointer; color: var(--dourado); }
 
@@ -87,7 +87,7 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 }
 .pilar-card strong { color: var(--dourado); display: block; margin-bottom: 5px; }
 
-/* LIDERANÇA COM NEON DOURADO (PRESERVADO) */
+/* LIDERANÇA */
 .apostolo-flex { display: flex; flex-direction: column; align-items: center; gap: 30px; }
 .apostolo-img {
   width: 100%; max-width: 350px; height: auto;
@@ -101,17 +101,10 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.3);
 }
 
-/* INSTAGRAM ESTILIZADO */
+/* INSTAGRAM */
 .insta-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  color: var(--dourado);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: 0.3s;
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+  color: var(--dourado); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s;
   border-bottom: 1px solid transparent;
 }
 .insta-link:hover { border-bottom-color: var(--dourado); opacity: 0.8; }
@@ -125,8 +118,13 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 .card:hover { transform: translateY(-5px); }
 .card img { width: 100%; height: 220px; object-fit: cover; }
 .img-center { object-position: center !important; } 
+.img-top { object-position: top !important; }
 
-/* BOTÕES E ÍCONES */
+.card-info { padding: 20px; text-align: center; }
+.card h4 { color: var(--dourado); font-size: 1.2rem; margin-bottom: 5px; }
+
+/* BOTÕES E BLOCO PARTICIPE */
+.cta { display: flex; flex-direction: column; gap: 15px; align-items: center; }
 .btn {
   width: 100%; max-width: 320px; padding: 16px; border-radius: 50px;
   text-decoration: none; font-weight: bold; text-align: center; transition: 0.3s;
@@ -135,9 +133,11 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 .btn-gold { border: 2px solid var(--dourado); color: var(--branco); }
 .btn-gold:hover { background: var(--dourado); color: var(--escuro); }
 .btn-yt { background: var(--vermelho-yt); color: white; border: 2px solid var(--vermelho-yt); }
+.btn-yt:hover { background: transparent; color: var(--vermelho-yt); }
 .btn-wpp { background: #25d366; color: white; border: 2px solid #25d366; }
+.btn-wpp:hover { background: transparent; color: #25d366; }
 
-/* BOTÕES FLUTUANTES PARALLAX */
+/* FLUTUANTES */
 .float-btns {
   position: fixed; bottom: 20px; width: 100%; padding: 0 10px;
   display: flex; justify-content: space-between; z-index: 1001; pointer-events: none;
@@ -173,22 +173,22 @@ footer{
 <body>
 
 <header>
-  <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg" alt="Logo Ministério Michel Breno">
+  <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg" alt="Logo Ministério Apostólico Michel Breno">
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <nav id="menu">
     <a href="#inicio">Início</a>
     <a href="#apostolo">Liderança</a>
-    <a href="#sobre">Ministério</a>
+    <a href="#sobre">Propósitos</a>
     <a href="#agenda">Agenda</a>
-    <a href="#contato">Participar</a>
-    <a href="#formacao">Treinamentos</a>
+    <a href="#contato">Cultos</a>
+    <a href="#formacao">Formação</a>
   </nav>
 </header>
 
 <section class="hero" id="inicio">
-  <h1>Ministério Michel Breno</h1>
-  <p>Ativação Profética e Alinhamento Bíblico</p>
-  <span style="color: var(--dourado); margin-top: 8px; font-size: 0.85rem; font-weight: bold;">PORTAL OFICIAL 100% ONLINE</span>
+  <h1>Ministério Apostólico Michel Breno</h1>
+  <p>Ministério Apostólico Caminho Profético</p>
+  <span style="color: var(--dourado); margin-top: 8px; font-size: 0.85rem; font-weight: bold;">IGREJA 100% ONLINE</span>
 </section>
 
 <section id="apostolo">
@@ -197,10 +197,10 @@ footer{
     <div>
       <h2 class="title" style="text-align: left; margin-bottom: 20px;">Apóstolo Michel Breno</h2>
       <p style="color: var(--cinza); margin-top: 10px;">
-        Levantado com autoridade apostólica para conduzir o corpo de Cristo à maturidade espiritual e revelação profunda das Escrituras.
+        Levantado pelo Senhor Jesus com autoridade apostólica e unção profética para conduzir a Igreja ao alinhamento espiritual e revelação da Palavra.
       </p>
       <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="insta-link">
-        <i class="fab fa-instagram"></i> Bio do Apóstolo: @apostolomichelbreno
+        <i class="fab fa-instagram"></i> Acompanhe no Instagram: @apostolomichelbreno
       </a>
     </div>
   </div>
@@ -209,15 +209,15 @@ footer{
 <section id="sobre">
   <h2 class="title">Nossa Missão</h2>
   <div class="pilares-grid">
-    <div class="pilar-card"><strong>Adoração</strong> Estilo de vida</div>
-    <div class="pilar-card"><strong>Ativação</strong> Despertar dons</div>
+    <div class="pilar-card"><strong>Adoração</strong> Glorificar a Deus</div>
+    <div class="pilar-card"><strong>Ministério</strong> Servir ao próximo</div>
     <div class="pilar-card"><strong>Evangelismo</strong> Alcançar nações</div>
-    <div class="pilar-card"><strong>Comunhão</strong> Família em Cristo</div>
+    <div class="pilar-card"><strong>Comunhão</strong> Família espiritual</div>
     <div class="pilar-card"><strong>Discipulado</strong> Maturidade cristã</div>
   </div>
   <div style="text-align: center;">
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="insta-link">
-      <i class="fab fa-instagram"></i> Siga o Ministério: @ministeriomichelbreno
+      <i class="fab fa-instagram"></i> Acompanhe no Instagram: @ministeriomichelbreno
     </a>
   </div>
 </section>
@@ -242,36 +242,40 @@ footer{
   </div>
 </section>
 
-<section id="contato" style="text-align: center;">
-  <h2 class="title">Conecte-se Conosco</h2>
-  <div class="cta" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-    <a href="https://youtube.com/@apmichelbreno" target="_blank" class="btn btn-yt">
-       <i class="fab fa-youtube"></i> YouTube Oficial
+<section id="contato" style="text-align: center; padding-bottom: 0;">
+  <h2 class="title">Participe dos Cultos</h2>
+  
+  <div class="cta">
+    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="btn btn-yt">
+       <i class="fab fa-youtube"></i> Inscreva-se no YouTube
     </a>
+
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="btn btn-gold">
        <i class="fab fa-instagram"></i> Instagram Ministério
     </a>
+
     <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="btn btn-gold">
        <i class="fab fa-instagram"></i> Instagram Apóstolo
     </a>
+    
     <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp">
-       <i class="fab fa-whatsapp"></i> Comunidade de Alinhamento
+       <i class="fab fa-whatsapp"></i> Comunidade Ativa
     </a>
   </div>
 </section>
 
 <section id="formacao">
-  <h2 class="title">Treinamentos Online</h2>
+  <h2 class="title">Formação Online</h2>
   <div class="grid-cards">
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/despertar_profetico.html" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/despertar.jpeg" alt="Despertar Profético" class="img-center">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/despertar.jpeg" alt="Despertar Profético" class="img-top">
       <div class="card-info">
         <h4>Despertar Profético</h4>
         <p>Acesse o treinamento</p>
       </div>
     </a>
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/desvendando_sonhos.html" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Desvendando os Sonhos" class="img-center">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Desvendando os Sonhos" class="img-top">
       <div class="card-info">
         <h4>Desvendando os Sonhos</h4>
         <p>Acesse o treinamento</p>
@@ -281,22 +285,23 @@ footer{
 </section>
 
 <section id="atendimento">
-  <h2 class="title">Cuidado com a Alma</h2>
+  <h2 class="title">Cuidados com a Alma</h2>
   <div class="grid-cards">
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/psicoterapeuta_crista.html" target="_blank" class="card" style="margin: auto; max-width: 800px;">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/eliane-home.jpeg" alt="Eliane Cristina - Psicoterapia Cristã" class="img-center" style="height: 440px;">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/eliane-home.jpeg" alt="Eliane Cristina" class="img-top" style="height: 440px;">
       <div class="card-info">
         <h4>Psicoterapia Cristã</h4>
         <p>Com Eliane Cristina</p>
+        <span style="color: var(--dourado); font-weight: bold; font-size: 0.9rem; margin-top: 10px; display: block;">Conheça o projeto</span>
       </div>
     </a>
   </div>
 
   <div class="qr-box">
-    <h3 style="color: var(--dourado); margin-bottom: 20px;">Semeie no Ministério</h3>
-    <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/qrcode.jpeg" alt="Pix para o Ministério Michel Breno" class="qr-img">
+    <h3 style="color: var(--dourado); margin-bottom: 20px; text-transform: uppercase;">Contribua com o Reino</h3>
+    <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/qrcode.jpeg" alt="Pix QR Code" class="qr-img">
     <span style="font-weight: bold; display: block;">mapro.brasil@gmail.com</span>
-    <span style="font-size: 0.9rem; margin-top: 8px; display: block;">Sua contribuição sustenta este portal oficial.</span>
+    <span style="font-size: 0.9rem; margin-top: 8px; display: block;">Apoie este ministério 100% online via PIX</span>
   </div>
 </section>
 
@@ -304,7 +309,7 @@ footer{
   <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp float-btn">
     <i class="fab fa-whatsapp"></i> Comunidade
   </a>
-  <a href="https://youtube.com/@apmichelbreno" target="_blank" class="btn btn-yt float-btn">
+  <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="btn btn-yt float-btn">
     <i class="fab fa-youtube"></i> Ministrações
   </a>
 </div>
@@ -312,11 +317,11 @@ footer{
 <footer>
   <div class="footer-socials">
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@apmichelbreno" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank"><i class="fab fa-whatsapp"></i></a>
   </div>
-  © 2025 Ministério Michel Breno<br>
-  Portal Oficial – Uma vida dirigida por propósitos bíblicos.
+  © 2025 Ministério Apostólico Michel Breno<br>
+  Uma igreja dirigida por propósitos bíblicos.
 </footer>
 
 <script>
