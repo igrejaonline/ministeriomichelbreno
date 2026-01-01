@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ministério Apostólico Michel Breno | Portal Oficial</title>
-<meta name="description" content="Seja bem-vindo ao portal oficial do Ministério Apostólico Michel Breno. Ativação profética, interpretação de sonhos e suporte emocional com princípios bíblicos.">
-<meta name="keywords" content="Ministério Michel Breno, igreja online, escola de profetas, ativação profética, interpretação de sonhos bíblicos, Michel Breno">
-<meta name="author" content="Ministério Michel Breno">
+<title>Ministério Apostólico Michel Breno | Igreja Online e Escola de Profetas</title>
+<meta name="description" content="Portal oficial do Ministério Apostólico Michel Breno. Oferecemos treinamentos bíblicos como Despertar Profético e Desvendando os Sonhos. Participe da nossa comunidade ativa.">
+<meta name="author" content="Ministério Apostólico Michel Breno">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://igrejaonline.github.io/ministeriomichelbreno" />
 
 <link rel="icon" type="image/jpeg" href="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -37,7 +35,7 @@ body{
   line-height: 1.6;
 }
 
-/* HEADER */
+/* HEADER ORIGINAL */
 header{
   position:fixed; top:0; width:100%; z-index:1000;
   background: rgba(5, 15, 24, 0.95);
@@ -47,7 +45,7 @@ header{
   border-bottom: 1px solid rgba(212, 175, 85, 0.2);
 }
 
-header img{ height: 55px; }
+header img{ height: 45px; }
 
 .menu-btn{ font-size: 28px; cursor: pointer; color: var(--dourado); }
 
@@ -72,8 +70,7 @@ nav a{
   border-bottom: 2px solid var(--dourado);
 }
 
-.hero h1{ font-size: 2.8rem; color: var(--dourado); letter-spacing: 4px; text-shadow: 0 0 20px rgba(212,175,55,0.3); }
-.hero p{ font-size: 0.9rem; color: var(--cinza); text-transform: uppercase; letter-spacing: 2px; }
+.hero h1{ font-size: 2.8rem; color: var(--dourado); letter-spacing: 4px; text-shadow: 0 0 20px rgba(212,175,55,0.3); line-height: 1.2; }
 
 /* SEÇÕES */
 section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
@@ -101,29 +98,48 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.3);
 }
 
-/* INSTAGRAM */
 .insta-link {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
-  color: var(--dourado); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--dourado);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.3s;
   border-bottom: 1px solid transparent;
 }
-.insta-link:hover { border-bottom-color: var(--dourado); opacity: 0.8; }
+.insta-link:hover {
+  border-bottom-color: var(--dourado);
+  opacity: 0.8;
+}
 
 /* GRID CARDS */
 .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 .card { 
-    background: var(--glass); border-radius: 15px; overflow: hidden; 
-    border: 1px solid rgba(212,175,55,0.2); text-decoration: none; color: inherit; transition: 0.3s;
+    background: var(--glass); 
+    border-radius: 15px; 
+    overflow: hidden; 
+    border: 1px solid rgba(212,175,55,0.2); 
+    text-decoration: none; 
+    color: inherit; 
+    transition: transform 0.3s;
 }
 .card:hover { transform: translateY(-5px); }
-.card img { width: 100%; height: 220px; object-fit: cover; }
+.card img { 
+  width: 100%; 
+  height: 220px; 
+  object-fit: cover; 
+}
+
 .img-center { object-position: center !important; } 
-.img-top { object-position: top !important; }
+.img-top { object-position: top !important; }    
 
 .card-info { padding: 20px; text-align: center; }
 .card h4 { color: var(--dourado); font-size: 1.2rem; margin-bottom: 5px; }
 
-/* BOTÕES E BLOCO PARTICIPE */
+/* BOTÕES E ÍCONES */
 .cta { display: flex; flex-direction: column; gap: 15px; align-items: center; }
 .btn {
   width: 100%; max-width: 320px; padding: 16px; border-radius: 50px;
@@ -132,31 +148,47 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 }
 .btn-gold { border: 2px solid var(--dourado); color: var(--branco); }
 .btn-gold:hover { background: var(--dourado); color: var(--escuro); }
+
 .btn-yt { background: var(--vermelho-yt); color: white; border: 2px solid var(--vermelho-yt); }
 .btn-yt:hover { background: transparent; color: var(--vermelho-yt); }
+
 .btn-wpp { background: #25d366; color: white; border: 2px solid #25d366; }
 .btn-wpp:hover { background: transparent; color: #25d366; }
 
-/* FLUTUANTES */
+/* BOTÕES FLUTUANTES */
 .float-btns {
-  position: fixed; bottom: 20px; width: 100%; padding: 0 10px;
-  display: flex; justify-content: space-between; z-index: 1001; pointer-events: none;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1001;
+  pointer-events: none;
 }
 .float-btn {
-  pointer-events: auto; flex: 1; max-width: 170px; margin: 0 5px;
-  font-size: 0.85rem; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  pointer-events: auto;
+  flex: 1;
+  max-width: 170px; 
+  margin: 0 5px;
+  font-size: 0.85rem;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .qr-box { text-align: center; margin-top: 40px; }
 .qr-img { width: 180px; border: 8px solid #fff; border-radius: 10px; margin-bottom: 10px; }
+.chave-pix { color: var(--branco); font-weight: bold; letter-spacing: 1px; display: block; margin-top: 5px; }
+.apoio-texto { color: var(--branco); font-size: 0.9rem; margin-top: 8px; display: block; }
 
 footer{
-  background: #000; padding: 40px 20px 100px; text-align: center; font-size: 0.9rem; color: #888;
+  background: #000; padding: 40px 20px; text-align: center; font-size: 0.9rem; color: #888;
   border-top: 1px solid rgba(212, 175, 55, 0.1);
+  padding-bottom: 100px; 
 }
 
 .footer-socials { margin-bottom: 20px; display: flex; justify-content: center; gap: 25px; }
-.footer-socials a { color: var(--branco); font-size: 1.5rem; transition: 0.3s; }
+.footer-socials a { color: var(--branco); text-decoration: none; font-size: 1.5rem; transition: 0.3s; }
 .footer-socials a:hover { color: var(--dourado); }
 
 @media(min-width:900px){
@@ -165,7 +197,7 @@ footer{
   .menu-btn{ display: none; }
   .hero h1 { font-size: 3.5rem; }
   .apostolo-flex { flex-direction: row; text-align: left; }
-  .float-btns { padding: 0 50px; bottom: 30px; }
+  .float-btns { padding: 0 50px; bottom: 30px; justify-content: space-between; }
   .float-btn { max-width: 250px; font-size: 1rem; }
 }
 </style>
@@ -186,9 +218,8 @@ footer{
 </header>
 
 <section class="hero" id="inicio">
-  <h1>Ministério Apostólico Michel Breno</h1>
-  <p>Ministério Apostólico Caminho Profético</p>
-  <span style="color: var(--dourado); margin-top: 8px; font-size: 0.85rem; font-weight: bold;">IGREJA 100% ONLINE</span>
+  <h1>Ministério Apostólico <br> Michel Breno</h1>
+  <span style="color: var(--branco); margin-top: 8px; font-size: 0.85rem; font-weight: bold; letter-spacing: 2px;">IGREJA 100% ONLINE</span>
 </section>
 
 <section id="apostolo">
@@ -244,20 +275,16 @@ footer{
 
 <section id="contato" style="text-align: center; padding-bottom: 0;">
   <h2 class="title">Participe dos Cultos</h2>
-  
   <div class="cta">
     <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="btn btn-yt">
        <i class="fab fa-youtube"></i> Inscreva-se no YouTube
     </a>
-
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="btn btn-gold">
        <i class="fab fa-instagram"></i> Instagram Ministério
     </a>
-
     <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="btn btn-gold">
        <i class="fab fa-instagram"></i> Instagram Apóstolo
     </a>
-    
     <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp">
        <i class="fab fa-whatsapp"></i> Comunidade Ativa
     </a>
@@ -268,14 +295,14 @@ footer{
   <h2 class="title">Formação Online</h2>
   <div class="grid-cards">
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/despertar_profetico.html" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/despertar.jpeg" alt="Despertar Profético" class="img-top">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/despertar.jpeg" alt="Curso Despertar Profético" class="img-top">
       <div class="card-info">
         <h4>Despertar Profético</h4>
         <p>Acesse o treinamento</p>
       </div>
     </a>
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/desvendando_sonhos.html" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Desvendando os Sonhos" class="img-top">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Curso Desvendando os Sonhos" class="img-top">
       <div class="card-info">
         <h4>Desvendando os Sonhos</h4>
         <p>Acesse o treinamento</p>
@@ -285,7 +312,7 @@ footer{
 </section>
 
 <section id="atendimento">
-  <h2 class="title">Cuidados com a Alma</h2>
+  <h2 class="title">Cuidado com a Alma</h2>
   <div class="grid-cards">
     <a href="https://igrejaonline.github.io/ministeriomichelbreno/page/psicoterapeuta_crista.html" target="_blank" class="card" style="margin: auto; max-width: 800px;">
       <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/eliane-home.jpeg" alt="Eliane Cristina" class="img-top" style="height: 440px;">
@@ -300,8 +327,8 @@ footer{
   <div class="qr-box">
     <h3 style="color: var(--dourado); margin-bottom: 20px; text-transform: uppercase;">Contribua com o Reino</h3>
     <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/qrcode.jpeg" alt="Pix QR Code" class="qr-img">
-    <span style="font-weight: bold; display: block;">mapro.brasil@gmail.com</span>
-    <span style="font-size: 0.9rem; margin-top: 8px; display: block;">Apoie este ministério 100% online via PIX</span>
+    <span class="chave-pix">mapro.brasil@gmail.com</span>
+    <span class="apoio-texto">Apoie este ministério 100% online via PIX</span>
   </div>
 </section>
 
