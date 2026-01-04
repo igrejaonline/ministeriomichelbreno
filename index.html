@@ -178,10 +178,30 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.qr-box { text-align: center; margin-top: 40px; }
-.qr-img { width: 180px; border: 8px solid #fff; border-radius: 10px; margin-bottom: 10px; }
-.chave-pix { color: var(--branco); font-weight: bold; letter-spacing: 1px; display: block; margin-top: 5px; }
-.apoio-texto { color: var(--branco); font-size: 0.9rem; margin-top: 8px; display: block; }
+.pix-box { text-align: center; margin-top: 40px; }
+.pix-box h3 { color: var(--dourado); margin-bottom: 20px; text-transform: uppercase; }
+.btn-pix { 
+  background: transparent; 
+  border: 1px solid var(--dourado); 
+  color: var(--dourado); 
+  padding: 12px 30px; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  font-weight: bold; 
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-pix:hover { background: var(--dourado); color: var(--escuro); }
+#pix-confirm { 
+  display: block; 
+  margin-top: 10px; 
+  font-size: 0.85rem; 
+  color: #25d366; 
+  opacity: 0; 
+  transition: 0.3s; 
+}
 
 footer{
   background: #000; padding: 40px 20px; text-align: center; font-size: 0.9rem; color: #888;
@@ -326,11 +346,12 @@ footer{
     </a>
   </div>
 
-  <div class="qr-box">
-    <h3 style="color: var(--dourado); margin-bottom: 20px; text-transform: uppercase;">Contribua com o Reino</h3>
-    <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/qrcode.jpeg" alt="Pix QR Code" class="qr-img">
-    <span class="chave-pix">ministeriomichelbreno@gmail.com</span>
-    <span class="apoio-texto">Apoie este ministério 100% online via PIX</span>
+  <div class="pix-box">
+    <h3>Contribua com o Reino</h3>
+    <button class="btn-pix" onclick="copyPix()">
+      <i class="fas fa-hand-holding-heart"></i> Apoie este ministério
+    </button>
+    <span id="pix-confirm">Chave pix copiada.</span>
   </div>
 </section>
 
@@ -359,6 +380,15 @@ function toggleMenu(){
   if(window.innerWidth < 900) {
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   }
+}
+
+function copyPix() {
+  const pixKey = "6e5e9543-78aa-46a1-925e-3f2b7f3ee81a";
+  navigator.clipboard.writeText(pixKey).then(() => {
+    const confirmMsg = document.getElementById('pix-confirm');
+    confirmMsg.style.opacity = '1';
+    setTimeout(() => { confirmMsg.style.opacity = '0'; }, 3000);
+  });
 }
 </script>
 
