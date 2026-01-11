@@ -22,6 +22,7 @@
   --escuro: #050f18;
   --cinza: #cfcfcf;
   --vermelho-yt: #FF0000;
+  --azul-fb: #1877F2;
   --glass: rgba(255, 255, 255, 0.05);
 }
 
@@ -157,6 +158,9 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 .btn-wpp { background: #25d366; color: white; border: 2px solid #25d366; }
 .btn-wpp:hover { background: transparent; color: #25d366; }
 
+.btn-fb { background: var(--azul-fb); color: white; border: 2px solid var(--azul-fb); }
+.btn-fb:hover { background: transparent; color: var(--azul-fb); }
+
 /* BOTÕES FLUTUANTES */
 .float-btns {
   position: fixed;
@@ -178,20 +182,12 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.pix-box { text-align: center; margin-top: 40px; }
-.pix-box h3 { color: var(--dourado); margin-bottom: 20px; text-transform: uppercase; }
+.pix-box { text-align: center; margin-top: 40px; display: flex; flex-direction: column; align-items: center; }
 .btn-pix { 
   background: transparent; 
   border: 1px solid var(--dourado); 
   color: var(--dourado); 
-  padding: 12px 30px; 
-  border-radius: 30px; 
   cursor: pointer; 
-  font-weight: bold; 
-  transition: 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 }
 .btn-pix:hover { background: var(--dourado); color: var(--escuro); }
 #pix-confirm { 
@@ -278,7 +274,7 @@ footer{
 <section id="agenda">
   <h2 class="title">Agenda Online</h2>
   <div class="grid-cards">
-    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="card">
+    <a href="https://www.youtube.com/@apostolomichelbreno?sub_confirmation=1" target="_blank" class="card">
       <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/culto.jpeg" alt="Culto de Celebração" class="img-center">
       <div class="card-info">
         <h4>Culto de Celebração</h4>
@@ -298,7 +294,7 @@ footer{
 <section id="contato" style="text-align: center; padding-bottom: 0;">
   <h2 class="title">Participe dos Cultos</h2>
   <div class="cta">
-    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="btn btn-yt">
+    <a href="https://www.youtube.com/@apostolomichelbreno?sub_confirmation=1" target="_blank" class="btn btn-yt">
        <i class="fab fa-youtube"></i> Inscreva-se no YouTube
     </a>
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank" class="btn btn-gold">
@@ -309,6 +305,9 @@ footer{
     </a>
     <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp">
        <i class="fab fa-whatsapp"></i> Comunidade Ativa
+    </a>
+    <a href="https://www.facebook.com/tesourooculto" target="_blank" class="btn btn-fb">
+       <i class="fab fa-facebook"></i> Facebook
     </a>
   </div>
 </section>
@@ -347,8 +346,8 @@ footer{
   </div>
 
   <div class="pix-box">
-    <h3>Contribua com o Reino</h3>
-    <button class="btn-pix" onclick="copyPix()">
+    <h2 class="title">Contribua com o Reino</h2>
+    <button class="btn btn-pix" onclick="copyPix()">
       <i class="fas fa-hand-holding-heart"></i> Apoie este ministério
     </button>
     <span id="pix-confirm">Chave pix copiada.</span>
@@ -359,7 +358,7 @@ footer{
   <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank" class="btn btn-wpp float-btn">
     <i class="fab fa-whatsapp"></i> Comunidade
   </a>
-  <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank" class="btn btn-yt float-btn">
+  <a href="https://www.youtube.com/@apostolomichelbreno?sub_confirmation=1" target="_blank" class="btn btn-yt float-btn">
     <i class="fab fa-youtube"></i> Ministrações
   </a>
 </div>
@@ -367,7 +366,7 @@ footer{
 <footer>
   <div class="footer-socials">
     <a href="https://instagram.com/ministeriomichelbreno" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com/@apostolomichelbreno" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.youtube.com/@apostolomichelbreno?sub_confirmation=1" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://chat.whatsapp.com/FWkipgvy7nH7lV8icxPCMk" target="_blank"><i class="fab fa-whatsapp"></i></a>
   </div>
   © 2025 – Ministério Apostólico Michel Breno<br>
