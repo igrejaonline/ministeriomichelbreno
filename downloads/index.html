@@ -59,22 +59,31 @@
             position: relative;
             z-index: 10;
         }
+        
+        /* MODIFICAÇÃO: Estilo igual ao Download */
         .btn-home { 
-            display: inline-flex; 
+            background: #000; 
+            color: #fff; 
+            text-decoration: none; 
+            padding: 14px 30px; /* Largura ajustada para o texto */
+            border-radius: 6px; 
+            font-weight: bold; 
+            display: inline-flex;
+            justify-content: center;
             align-items: center;
             gap: 10px;
-            border: 2px solid #111; 
-            color: #111; 
-            padding: 12px 30px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            transition: all 0.3s ease; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            font-size: 0.85rem;
+            transition: 0.3s; 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border: none;
         }
-        .btn-home:hover { background: #111; color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .btn-home:hover { 
+            background: #D4AF37; 
+            color: #000; 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
 
         /* CONTEÚDO PRINCIPAL */
         .container { 
@@ -198,7 +207,7 @@
             const card = document.createElement('div');
             card.className = 'card';
             
-            // MODIFICAÇÃO: Uso de caminho ABSOLUTO para arquivos externos
+            // CAMINHOS ABSOLUTOS
             const baseUrl = "https://ministeriomichelbreno.com.br/files/";
             
             const imgPath = `${baseUrl}${item.id}.jpg`; 
