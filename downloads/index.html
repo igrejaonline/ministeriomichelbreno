@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Materiais - Ministério Michel Breno</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #f4f4f4; text-align: center; padding: 20px; }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 280px; display: flex; flex-direction: column; align-items: center; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: auto; border-radius: 5px; margin-bottom: 15px; object-fit: cover; aspect-ratio: 1/1.4; background: #eee; }
+        .card h3 { font-size: 18px; margin: 0 0 15px 0; color: #333; text-transform: capitalize; }
+        .btn { background: #000; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-weight: bold; width: 80%; display: block; transition: background 0.3s; }
+        .btn:hover { background: #333; }
+        h1 { color: #333; margin-bottom: 10px; }
+        p.desc { color: #666; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Biblioteca de Estudos</h1>
+    <p class="desc">Baixe gratuitamente os materiais de apoio das nossas Lives.</p>
+
+    <div class="grid" id="biblioteca">
+        </div>
+
+    <script>
+        // LISTA DE MATERIAIS (O Neo só precisa atualizar aqui!)
+        // Coloque o "id" igual ao nome do arquivo (sem o .pdf)
+        const materiais = [
+            { id: "os_9_frutos", titulo: "Os 9 Frutos do Espírito" },
+            { id: "ministerios", titulo: "Manual de Identidade" },
+            // Para adicionar um novo, basta copiar a linha de cima e mudar o nome
+        ];
+
+        const container = document.getElementById('biblioteca');
+
+        materiais.forEach(item => {
+            // Cria o HTML de cada card
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            // Monta os caminhos (assume que estão na pasta /files)
+            // Se não tiver imagem, ele tenta carregar, se falhar, fica cinza.
+            const imgPath = `../files/${item.id}.jpg`; 
+            const pdfPath = `../files/${item.id}.pdf`;
+
+            card.innerHTML = `
+                <img src="${imgPath}" alt="${item.titulo}" onerror="this.src='https://via.placeholder.com/300x400?text=Capa+Indisponível'">
+                <h3>${item.titulo}</h3>
+                <a href="${pdfPath}" class="btn" download target="_blank">BAIXAR AGORA</a>
+            `;
+
+            container.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
