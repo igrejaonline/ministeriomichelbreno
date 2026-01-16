@@ -3,57 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Materiais - Ministério Michel Breno</title>
+    <title>Biblioteca de Materiais - Ministério Apostólico Michel Breno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Arial', sans-serif; background: #f4f4f4; text-align: center; padding: 20px; }
-        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 280px; display: flex; flex-direction: column; align-items: center; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: auto; border-radius: 5px; margin-bottom: 15px; object-fit: cover; aspect-ratio: 1/1.4; background: #eee; }
-        .card h3 { font-size: 18px; margin: 0 0 15px 0; color: #333; text-transform: capitalize; }
-        .btn { background: #000; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-weight: bold; width: 80%; display: block; transition: background 0.3s; }
-        .btn:hover { background: #333; }
-        h1 { color: #333; margin-bottom: 10px; }
-        p.desc { color: #666; margin-bottom: 30px; }
+        /* =========================================
+           DESIGN SYSTEM: PREMIUM & MINIMALIST
+           ========================================= */
+        
+        /* RESET E BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* HEADER PREMIUM */
+        header { 
+            background: #000; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 4px solid #D4AF37; /* Dourado Luxury */
+        }
+        
+        /* LOGO */
+        .logo { display: flex; align-items: center; text-decoration: none; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.8; }
+        .logo img {
+            height: 50px; 
+            width: auto;
+            display: block;
+            border-radius: 4px; 
+        }
+
+        /* BOTÃO YOUTUBE */
+        .btn-youtube { 
+            background-color: #FF0000; 
+            color: white; 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .btn-youtube:hover { background-color: #cc0000; box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+
+        /* NAVEGAÇÃO SECUNDÁRIA (VOLTAR) */
+        .nav-back { 
+            background: #fff; 
+            padding: 20px; 
+            text-align: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            position: relative;
+            z-index: 10;
+        }
+        .btn-home { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #111; 
+            color: #111; 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 0.85rem;
+        }
+        .btn-home:hover { background: #111; color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* CONTEÚDO PRINCIPAL */
+        .container { 
+            max-width: 1200px; 
+            margin: 50px auto; 
+            padding: 0 20px; 
+            flex: 1; 
+            text-align: center; 
+        }
+        h1 { margin-bottom: 15px; font-size: 2.2rem; color: #111; letter-spacing: -0.5px; }
+        p.subtitle { color: #666; margin-bottom: 50px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+        /* GRID SYSTEM */
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        
+        /* CARD DESIGN */
+        .card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            width: 300px; 
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .card:hover { transform: translateY(-7px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); border-color: #D4AF37; }
+        
+        .card img { 
+            width: 100%; 
+            aspect-ratio: 1/1.4; 
+            object-fit: cover; 
+            border-radius: 6px; 
+            margin-bottom: 20px; 
+            background: #eee; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 { 
+            font-size: 1.2rem; 
+            margin-bottom: 20px; 
+            color: #111; 
+            flex-grow: 1; 
+            font-weight: 600;
+        }
+
+        /* BOTÃO DOWNLOAD */
+        .btn-download { 
+            background: #000; 
+            color: #fff; 
+            text-decoration: none; 
+            padding: 14px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .btn-download:hover { background: #D4AF37; color: #000; }
+
+        /* FOOTER */
+        footer { background: #111; color: #666; text-align: center; padding: 30px; margin-top: auto; font-size: 0.9rem; border-top: 1px solid #222; }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            .btn-youtube { width: 100%; justify-content: center; }
+            .container { margin: 30px auto; }
+            h1 { font-size: 1.8rem; }
+            .card { width: 100%; max-width: 340px; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>📚 Biblioteca de Estudos</h1>
-    <p class="desc">Baixe gratuitamente os materiais de apoio das nossas Lives.</p>
+    <header>
+        <a href="https://ministeriomichelbreno.com.br/" class="logo">
+            <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg" alt="Ministério Apostólico Michel Breno">
+        </a>
+        
+        <a href="https://www.youtube.com/@apostolomichelbreno?sub_confirmation=1" target="_blank" class="btn-youtube">
+            <i class="fab fa-youtube"></i> INSCREVER-SE
+        </a>
+    </header>
 
-    <div class="grid" id="biblioteca">
-        </div>
+    <div class="nav-back">
+        <a href="https://ministeriomichelbreno.com.br/" class="btn-home">
+            <i class="fas fa-arrow-left"></i> Voltar para o Site Principal
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Biblioteca de Estudos</h1>
+        <p class="subtitle">Acesse e baixe gratuitamente os manuais exclusivos e materiais de apoio das nossas Lives.</p>
+
+        <div class="grid" id="biblioteca"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 – Ministério Apostólico Michel Breno</p>
+    </footer>
 
     <script>
-        // LISTA DE MATERIAIS (O Neo só precisa atualizar aqui!)
-        // Coloque o "id" igual ao nome do arquivo (sem o .pdf)
         const materiais = [
             { id: "ministerios", titulo: "Manual de Identidade" },
-            // Para adicionar um novo, basta copiar a linha de cima e mudar o nome
+            // Adicione novos itens aqui
         ];
 
         const container = document.getElementById('biblioteca');
 
         materiais.forEach(item => {
-            // Cria o HTML de cada card
             const card = document.createElement('div');
             card.className = 'card';
             
-            // Monta os caminhos (assume que estão na pasta /files)
-            // Se não tiver imagem, ele tenta carregar, se falhar, fica cinza.
-            const imgPath = `../files/${item.id}.jpg`; 
-            const pdfPath = `../files/${item.id}.pdf`;
+            // MODIFICAÇÃO: Uso de caminho ABSOLUTO para arquivos externos
+            // Isso garante que o download funcione independente de onde esta página HTML esteja
+            const baseUrl = "https://ministeriomichelbreno.com.br/files/";
+            
+            const imgPath = `${baseUrl}${item.id}.jpg`; 
+            const pdfPath = `${baseUrl}${item.id}.pdf`;
 
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.titulo}" onerror="this.src='https://via.placeholder.com/300x400?text=Capa+Indisponível'">
                 <h3>${item.titulo}</h3>
-                <a href="${pdfPath}" class="btn" download target="_blank">BAIXAR AGORA</a>
+                <a href="${pdfPath}" class="btn-download" download target="_blank">
+                    <i class="fas fa-download"></i> BAIXAR AGORA
+                </a>
             `;
-
             container.appendChild(card);
         });
     </script>
-
 </body>
 </html>
