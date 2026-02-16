@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aguarde, redirecionando...</title>
+    
+    <meta http-equiv="refresh" content="2;url=https://pay.kiwify.com.br/D4R76sE">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 16px; margin-bottom: 30px; }
+        
+        /* Animação de Carregamento (Spinner) */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* MÉTODO 3: BOTÃO MANUAL (O "Plano C" de Segurança) */
+        .btn {
+            background-color: #2ecc71; /* Verde Sucesso */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="loader"></div>
+        <h2>Quase lá...</h2>
+        <p>Estamos levando você para a página segura de pagamento.</p>
+        
+        <a href="https://pay.kiwify.com.br/D4R76sE" class="btn">
+            CLIQUE AQUI SE NÃO ABRIR
+        </a>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://pay.kiwify.com.br/D4R76sE";
+        }, 1000); // Espera 1 segundo para mostrar a mensagem e redireciona
+    </script>
+
+</body>
+</html>
