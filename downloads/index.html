@@ -214,10 +214,16 @@
             const imgPath = `${baseUrl}${item.id}.webp`; 
             const pdfPath = `${baseUrl}${item.id}.pdf`;
 
+            // MODIFICAÇÃO: Adicionado evento onclick para rastreamento no GoatCounter
+            // Isso envia um evento 'Download: Nome do Arquivo' para o seu painel
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.titulo}" onerror="this.src='https://via.placeholder.com/300x400?text=Capa+Indisponível'">
                 <h3>${item.titulo}</h3>
-                <a href="${pdfPath}" class="btn-download" download target="_blank">
+                <a href="${pdfPath}" 
+                   class="btn-download" 
+                   download 
+                   target="_blank"
+                   onclick="if(window.goatcounter) goatcounter.count({path: 'download-${item.id}', title: 'Download: ${item.titulo}', event: true})">
                     <i class="fas fa-download"></i> BAIXAR AGORA
                 </a>
             `;
