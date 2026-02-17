@@ -144,6 +144,42 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   object-fit: cover; 
 }
 
+/* CSS ESPECÍFICO PARA ESCOLAS (CARDS REDONDOS) */
+#escolas .grid-cards {
+  justify-items: center; /* Centraliza os círculos nas colunas */
+}
+#escolas .card {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1; /* Garante que seja um círculo perfeito */
+  width: 100%;
+  max-width: 280px; /* Tamanho máximo do círculo */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Texto no fundo */
+  align-items: center;
+  position: relative;
+  border: 2px solid var(--dourado); /* Realça o formato redondo */
+}
+#escolas .card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: 50%;
+}
+#escolas .card-info {
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  width: 100%;
+  padding-bottom: 35px; /* Espaço do fundo do círculo */
+  padding-top: 20px;
+  border-bottom-left-radius: 50%; /* Acompanha a curva */
+  border-bottom-right-radius: 50%;
+}
+
 .img-center { object-position: center !important; } 
 .img-top { object-position: top !important; }    
 
@@ -274,6 +310,18 @@ footer{
       <a href="https://instagram.com/apostolomichelbreno" target="_blank" class="insta-link">
         <i class="fab fa-instagram"></i> Acompanhe no Instagram: @apostolomichelbreno
       </a>
+    </div>
+  </div>
+</section>
+
+<section id="escolas">
+  <h2 class="title">Escolas</h2>
+  <div class="grid-cards">
+    <a href="https://ministeriomichelbreno.com.br/libertadores/" target="_blank" class="card">
+      <img src="https://ministeriomichelbreno.com.br/img/libertadores.webp" alt="Escola de Libertadores">
+    </a>
+    <div class="card">
+      <img src="https://ministeriomichelbreno.com.br/img/profetas.webp" alt="Escola de Profetas">
     </div>
   </div>
 </section>
