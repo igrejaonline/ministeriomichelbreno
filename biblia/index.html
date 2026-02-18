@@ -53,10 +53,28 @@
             flex-direction: column;
         }
 
-        /* Scrollbar */
+        /* Scrollbar do Navegador */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-onyx); }
         ::-webkit-scrollbar-thumb { background: var(--gold-ancient); border-radius: 4px; border: 2px solid var(--bg-onyx); }
+
+        /* Barra de Progresso de Leitura (Topo) */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 9999; /* Fica acima de tudo */
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #888; /* Cor Cinza solicitada */
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
 
         /* ================= HEADER ================= */
         header {
@@ -292,45 +310,13 @@
            MOBILE OPTIMIZATION (O Fix da Tela)
            ================================================================ */
         @media (max-width: 768px) {
-            /* 1. Header Mais Compacto */
-            .header-container {
-                padding: 10px;
-                gap: 5px;
-            }
-
-            /* 2. Título Reduzido */
+            .header-container { padding: 10px; gap: 5px; }
             .site-title h1 { font-size: 1rem; margin-bottom: 2px; }
-            .site-title span { display: none; } /* Oculta subtítulo no mobile */
-
-            /* 3. Reorganização dos Controles (Layout de App) */
-            .controls {
-                flex-direction: row; /* Força linha horizontal */
-                flex-wrap: wrap;     /* Permite quebra organizada */
-                gap: 5px;
-                justify-content: space-between;
-            }
-
-            /* 4. Distribuição Inteligente */
-            .control-buttons {
-                flex: 0 0 auto; /* Botões ocupam só o espaço necessário */
-            }
-            
-            .neo-select {
-                flex: 1; /* Selects crescem para ocupar o meio */
-                min-width: 0; /* Evita que estourem a tela */
-                padding: 8px 5px; /* Padding menor */
-                font-size: 0.9rem;
-                text-overflow: ellipsis;
-            }
-
-            /* 5. Busca na linha de baixo (Full width) */
-            .search-wrapper {
-                width: 100%;
-                order: 10; /* Força ir para o final */
-                margin-top: 5px;
-            }
-            
-            /* Ajustes finos */
+            .site-title span { display: none; }
+            .controls { flex-direction: row; flex-wrap: wrap; gap: 5px; justify-content: space-between; }
+            .control-buttons { flex: 0 0 auto; }
+            .neo-select { flex: 1; min-width: 0; padding: 8px 5px; font-size: 0.9rem; text-overflow: ellipsis; }
+            .search-wrapper { width: 100%; order: 10; margin-top: 5px; }
             .icon-btn { width: 38px; height: 38px; }
             .chapter-title { font-size: 1.8rem; }
             .chapter-header { margin-bottom: 30px; }
@@ -341,6 +327,10 @@
 
 </head>
 <body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="readingProgressBar"></div>
+    </div>
 
     <div id="loadingOverlay">
         <div class="spinner"></div>
@@ -405,12 +395,11 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.3 (Mobile Optimized)
+         * NEO CORE ENGINE v2.4 (Progress Bar Restored)
          */
 
         const App = {
             data: null,
-            // LISTA MESTRA DE NOMES EM PORTUGUÊS (Para Correção Visual)
             bookNamesPT: [
                 "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio", "Josué", "Juízes", "Rute", 
                 "1 Samuel", "2 Samuel", "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras", "Neemias", "Ester", "Jó", "Salmos", "Provérbios", "Eclesiastes", "Cânticos", "Isaías", "Jeremias", "Lamentações", "Ezequiel", "Daniel", "Oseias", "Joel", "Amós", "Obadias", "Jonas", "Miqueias", "Naum", "Habacuque", "Sofonias", "Ageu", "Zacarias", "Malaquias",
@@ -435,11 +424,10 @@
                 zenToggle: document.getElementById('zenToggle'),
                 zenExit: document.getElementById('zenExit'),
                 toast: document.getElementById('toast'),
-                body: document.body
+                progressBar: document.getElementById('readingProgressBar')
             },
 
             init() {
-                // Verificar se os dados foram carregados do arquivo externo
                 if (typeof window.BIBLE_DATA !== 'undefined') {
                     this.data = window.BIBLE_DATA;
                     this.startEngine();
@@ -450,17 +438,25 @@
 
             startEngine() {
                 this.populateBooks();
-                this.loadChapter(0, 0); // Começa em Gênesis 1
+                this.loadChapter(0, 0);
                 this.setupEvents();
                 
-                // Remove loader com fade out
+                // Remove loader
                 setTimeout(() => {
                     this.el.loader.style.opacity = '0';
                     setTimeout(() => this.el.loader.style.display = 'none', 500);
                 }, 800);
             },
 
-            // Recupera o nome correto (Da lista PT ou Original)
+            // --- Lógica da Barra de Progresso ---
+            updateProgressBar() {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / scrollHeight) * 100;
+                this.el.progressBar.style.width = scrollPercentage + "%";
+            },
+            // ------------------------------------
+
             getBookName(index) {
                 if (this.bookNamesPT[index]) return this.bookNamesPT[index];
                 if (this.data[index] && this.data[index].name) return this.data[index].name;
@@ -472,7 +468,6 @@
                 this.data.forEach((book, index) => {
                     const opt = document.createElement('option');
                     opt.value = index;
-                    // Correção: Usa o nome traduzido
                     opt.textContent = this.getBookName(index);
                     this.el.bookSelect.appendChild(opt);
                 });
@@ -484,38 +479,31 @@
                 book.chapters.forEach((_, index) => {
                     const opt = document.createElement('option');
                     opt.value = index;
-                    opt.textContent = `${index + 1}`; // Apenas número no mobile para economizar espaço
-                    // No desktop poderia ser "Capítulo X", mas só número é mais limpo
+                    opt.textContent = `${index + 1}`;
                     this.el.chapterSelect.appendChild(opt);
                 });
             },
 
             loadChapter(bookIdx, chapIdx) {
-                // Validações
                 if (bookIdx < 0 || bookIdx >= this.data.length) return;
                 const book = this.data[bookIdx];
                 if (chapIdx < 0 || chapIdx >= book.chapters.length) return;
 
-                // Atualizar Estado
                 this.state.bookIndex = bookIdx;
                 this.state.chapterIndex = chapIdx;
 
-                // Sincronizar UI
                 this.el.bookSelect.value = bookIdx;
                 
-                // Se mudou de livro, precisa refazer a lista de capítulos
                 if (this.el.chapterSelect.children.length !== book.chapters.length || 
                     this.el.chapterSelect.children.length === 0) {
                     this.populateChapters(bookIdx);
                 }
                 this.el.chapterSelect.value = chapIdx;
 
-                // Renderizar Título (Usando nome corrigido)
                 const correctedName = this.getBookName(bookIdx);
                 this.el.displayTitle.textContent = `${correctedName} ${chapIdx + 1}`;
                 this.el.bibleText.innerHTML = '';
 
-                // Voltar a exibir navegação (caso estivesse em modo busca)
                 document.querySelector('.nav-footer').style.display = 'flex';
                 document.querySelector('.chapter-header').style.display = 'block';
 
@@ -533,42 +521,32 @@
                     this.el.bibleText.appendChild(div);
                 });
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'auto' }); // Scroll imediato para o topo
+                this.updateProgressBar(); // Reseta a barra
                 this.updateNavButtons();
             },
 
             performSearch() {
                 const term = this.el.searchInput.value.toLowerCase().trim();
-                if (term.length < 3) {
-                    alert("Digite pelo menos 3 letras para buscar.");
-                    return;
-                }
+                if (term.length < 3) { alert("Digite pelo menos 3 letras para buscar."); return; }
 
                 this.el.bibleText.innerHTML = '<p style="text-align:center; color:#888;">Buscando...</p>';
                 this.el.displayTitle.textContent = `Busca: "${term}"`;
-                document.querySelector('.nav-footer').style.display = 'none'; // Esconde nav na busca
+                document.querySelector('.nav-footer').style.display = 'none';
 
                 const results = [];
                 let count = 0;
-                const maxResults = 50; // Limite para performance
+                const maxResults = 50;
 
-                // Algoritmo de Busca Local
                 for (let b = 0; b < this.data.length; b++) {
                     const book = this.data[b];
-                    const correctedName = this.getBookName(b); // Usa nome em PT
-
+                    const correctedName = this.getBookName(b);
                     for (let c = 0; c < book.chapters.length; c++) {
                         const chapter = book.chapters[c];
                         for (let v = 0; v < chapter.length; v++) {
                             const verseText = chapter[v];
                             if (verseText.toLowerCase().includes(term)) {
-                                results.push({
-                                    bookIdx: b,
-                                    chapIdx: c,
-                                    verseNum: v + 1,
-                                    text: verseText,
-                                    bookName: correctedName // Salva nome corrigido
-                                });
+                                results.push({ bookIdx: b, chapIdx: c, verseNum: v + 1, text: verseText, bookName: correctedName });
                                 count++;
                                 if (count >= maxResults) break;
                             }
@@ -578,7 +556,6 @@
                     if (count >= maxResults) break;
                 }
 
-                // Renderizar Resultados
                 this.el.bibleText.innerHTML = '';
                 if (results.length === 0) {
                     this.el.bibleText.innerHTML = '<p style="text-align:center; margin-top:20px;">Nenhum resultado encontrado.</p>';
@@ -586,21 +563,13 @@
                     results.forEach(res => {
                         const div = document.createElement('div');
                         div.className = 'search-result-item';
-                        div.innerHTML = `
-                            <div class="search-ref">${res.bookName} ${res.chapIdx + 1}:${res.verseNum}</div>
-                            <div class="search-content">"${res.text}"</div>
-                        `;
-                        div.addEventListener('click', () => {
-                            this.loadChapter(res.bookIdx, res.chapIdx);
-                        });
+                        div.innerHTML = `<div class="search-ref">${res.bookName} ${res.chapIdx + 1}:${res.verseNum}</div><div class="search-content">"${res.text}"</div>`;
+                        div.addEventListener('click', () => { this.loadChapter(res.bookIdx, res.chapIdx); });
                         this.el.bibleText.appendChild(div);
                     });
-                    
                     if (count >= maxResults) {
                         const limitMsg = document.createElement('div');
-                        limitMsg.style.textAlign = 'center';
-                        limitMsg.style.padding = '20px';
-                        limitMsg.style.color = '#666';
+                        limitMsg.style.textAlign = 'center'; limitMsg.style.padding = '20px'; limitMsg.style.color = '#666';
                         limitMsg.textContent = `Mostrando os primeiros ${maxResults} resultados. Seja mais específico.`;
                         this.el.bibleText.appendChild(limitMsg);
                     }
@@ -610,10 +579,7 @@
             updateNavButtons() {
                 const bIdx = this.state.bookIndex;
                 const cIdx = this.state.chapterIndex;
-                
-                // Lógica simples: desabilitar se for inicio de Genesis ou fim de Apocalipse
                 this.el.btnPrev.disabled = (bIdx === 0 && cIdx === 0);
-                
                 const lastBook = this.data.length - 1;
                 const lastChap = this.data[lastBook].chapters.length - 1;
                 this.el.btnNext.disabled = (bIdx === lastBook && cIdx === lastChap);
@@ -622,28 +588,16 @@
             navigate(direction) {
                 let b = this.state.bookIndex;
                 let c = this.state.chapterIndex;
-
-                if (direction === 1) { // Próximo
+                if (direction === 1) {
                     const chaptersInBook = this.data[b].chapters.length;
-                    if (c < chaptersInBook - 1) {
-                        c++;
-                    } else if (b < this.data.length - 1) {
-                        b++;
-                        c = 0;
-                    }
-                } else { // Anterior
-                    if (c > 0) {
-                        c--;
-                    } else if (b > 0) {
-                        b--;
-                        c = this.data[b].chapters.length - 1;
-                    }
+                    if (c < chaptersInBook - 1) { c++; } else if (b < this.data.length - 1) { b++; c = 0; }
+                } else {
+                    if (c > 0) { c--; } else if (b > 0) { b--; c = this.data[b].chapters.length - 1; }
                 }
                 this.loadChapter(b, c);
             },
 
             copyToClipboard(text, ref) {
-                // Branding Atualizado no Copiar e Colar
                 const fullText = `"${text}"\n\n${ref} - Almeida Antiga\nMinistério Apostólico Michel Breno`;
                 navigator.clipboard.writeText(fullText).then(() => {
                     this.el.toast.classList.add('active');
@@ -653,46 +607,31 @@
 
             toggleZen() {
                 this.state.isZen = !this.state.isZen;
-                if (this.state.isZen) {
-                    document.body.classList.add('zen-mode');
-                } else {
-                    document.body.classList.remove('zen-mode');
-                }
+                if (this.state.isZen) { document.body.classList.add('zen-mode'); } else { document.body.classList.remove('zen-mode'); }
             },
 
             setupEvents() {
+                // Evento de Scroll para a barra de progresso
+                window.addEventListener('scroll', () => this.updateProgressBar());
+
                 this.el.bookSelect.addEventListener('change', (e) => {
                     this.populateChapters(parseInt(e.target.value));
                     this.loadChapter(parseInt(e.target.value), 0);
                 });
-
                 this.el.chapterSelect.addEventListener('change', (e) => {
                     this.loadChapter(this.state.bookIndex, parseInt(e.target.value));
                 });
-
                 this.el.btnPrev.addEventListener('click', () => this.navigate(-1));
                 this.el.btnNext.addEventListener('click', () => this.navigate(1));
-
                 this.el.zenToggle.addEventListener('click', () => this.toggleZen());
                 this.el.zenExit.addEventListener('click', () => this.toggleZen());
-
-                // Busca
                 this.el.searchBtn.addEventListener('click', () => this.performSearch());
-                this.el.searchInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.performSearch();
-                });
-
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && this.state.isZen) this.toggleZen();
-                });
+                this.el.searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.performSearch(); });
+                document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && this.state.isZen) this.toggleZen(); });
             }
         };
 
-        // Iniciar
-        document.addEventListener('DOMContentLoaded', () => {
-            App.init();
-        });
-
+        document.addEventListener('DOMContentLoaded', () => { App.init(); });
     </script>
 </body>
 </html>
