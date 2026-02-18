@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagradas Escrituras | Almeida Original</title>
+    
+    <meta name="description" content="Leia a Bíblia Sagrada na versão clássica de João Ferreira de Almeida. Ministério Michel Breno.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================================================================
+           NEO STYLE SYSTEM: "CATHEDRAL DARK"
+           ================================================================ */
+        :root {
+            --bg-onyx: #0f0f0f;
+            --bg-paper: #161616;
+            --text-main: #dcdcdc;
+            --text-muted: #888;
+            --gold-ancient: #C5A059;
+            --gold-light: #e5c07b;
+            --font-title: 'Cinzel Decorative', cursive;
+            --font-body: 'Crimson Text', serif;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.5);
+            --border-gold: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-onyx);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-onyx); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-ancient); border-radius: 4px; border: 2px solid var(--bg-onyx); }
+
+        /* ================= HEADER ================= */
+        header {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--border-gold);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .site-title {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .site-title h1 {
+            font-family: var(--font-title);
+            color: var(--gold-ancient);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+        .site-title span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            margin-top: 2px;
+        }
+
+        /* Controles */
+        .controls {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .neo-select, .neo-input {
+            background: var(--bg-paper);
+            border: 1px solid #333;
+            color: var(--text-main);
+            padding: 10px 15px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .neo-select:hover, .neo-input:focus {
+            border-color: var(--gold-ancient);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+        }
+
+        .search-wrapper { position: relative; display: flex; align-items: center; }
+        .search-btn {
+            background: transparent;
+            border: none;
+            color: var(--gold-ancient);
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .zen-btn {
+            background: transparent;
+            border: 1px solid #333;
+            color: var(--text-muted);
+            width: 45px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .zen-btn:hover { color: var(--gold-ancient); border-color: var(--gold-ancient); }
+
+        /* ================= LEITURA ================= */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 100px 20px;
+        }
+
+        .chapter-header { text-align: center; margin-bottom: 50px; }
+        
+        .chapter-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--gold-ancient);
+            margin-bottom: 10px;
+        }
+
+        .verse-box {
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            line-height: 1.9;
+        }
+
+        .verse-box:hover {
+            border-left: 2px solid var(--gold-ancient);
+            background: linear-gradient(90deg, rgba(197,160,89,0.05), transparent);
+        }
+
+        .verse-number {
+            font-family: var(--font-title);
+            color: var(--gold-ancient);
+            font-size: 0.9rem;
+            margin-right: 10px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .verse-text { font-size: 1.25rem; color: #e0e0e0; }
+
+        /* Resultado da Busca */
+        .search-result-item {
+            background: var(--bg-paper);
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-result-item:hover { background: #222; }
+        .search-ref { color: var(--gold-ancient); font-family: var(--font-title); font-size: 0.9rem; }
+        .search-content { color: #aaa; font-style: italic; margin-top: 5px; font-size: 1rem; }
+
+        /* ================= NAVIGATION ================= */
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--gold-ancient);
+            color: var(--gold-ancient);
+            padding: 12px 30px;
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn:hover { background: var(--gold-ancient); color: #000; }
+        .nav-btn:disabled { border-color: #333; color: #444; cursor: not-allowed; background: transparent; }
+
+        /* ================= MODOS & UTILS ================= */
+        /* Modo Zen */
+        body.zen-mode header { transform: translateY(-100%); }
+        body.zen-mode main { padding-top: 60px; }
+        
+        .zen-exit {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(0,0,0,0.6); color: #fff;
+            border: none; padding: 12px; border-radius: 50%;
+            cursor: pointer; opacity: 0; pointer-events: none;
+            transition: 0.3s; z-index: 200;
+        }
+        body.zen-mode .zen-exit { opacity: 1; pointer-events: all; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 30px; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gold-ancient); color: #000;
+            padding: 12px 25px; font-family: var(--font-title);
+            font-weight: bold; border-radius: 4px;
+            opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .toast.active { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Loading */
+        #loadingOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-onyx); z-index: 2000;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: var(--gold-ancient); font-family: var(--font-title);
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 3px solid #333;
+            border-top: 3px solid var(--gold-ancient); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .controls { flex-direction: column; }
+            .search-wrapper { width: 100%; }
+            .neo-input { width: 100%; }
+            .verse-text { font-size: 1.1rem; }
+            .chapter-title { font-size: 1.8rem; }
+        }
+    </style>
+
+    <script src="biblia-dados.js"></script>
+
+</head>
+<body>
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Abrindo as Escrituras...</p>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="site-title">
+                <h1>Sagradas Escrituras</h1>
+                <span>Ministério Michel Breno</span>
+            </div>
+
+            <div class="controls">
+                <select id="bookSelect" class="neo-select"></select>
+                <select id="chapterSelect" class="neo-select"></select>
+                
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="neo-input" placeholder="Buscar palavra...">
+                    <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+
+                <button id="zenToggle" class="zen-btn" title="Modo Leitura (F11)">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <button id="zenExit" class="zen-exit"><i class="fas fa-compress"></i></button>
+
+    <main id="mainContent">
+        <div class="chapter-header">
+            <h2 id="displayTitle" class="chapter-title">Gênesis 1</h2>
+            <div style="color: #666; font-style: italic;">Almeida Antiga</div>
+        </div>
+
+        <div id="bibleText">
+            </div>
+
+        <nav class="nav-footer">
+            <button id="btnPrev" class="nav-btn"><i class="fas fa-chevron-left"></i> Anterior</button>
+            <button id="btnNext" class="nav-btn">Próximo <i class="fas fa-chevron-right"></i></button>
+        </nav>
+    </main>
+
+    <div id="toast" class="toast">
+        <i class="fas fa-feather-alt"></i> Versículo Copiado
+    </div>
+
+    <script>
+        /**
+         * NEO CORE ENGINE v2.0
+         * Integrado com biblia-dados.js externo
+         */
+
+        const App = {
+            data: null,
+            state: {
+                bookIndex: 0,
+                chapterIndex: 0,
+                isZen: false
+            },
+            el: {
+                bookSelect: document.getElementById('bookSelect'),
+                chapterSelect: document.getElementById('chapterSelect'),
+                displayTitle: document.getElementById('displayTitle'),
+                bibleText: document.getElementById('bibleText'),
+                btnPrev: document.getElementById('btnPrev'),
+                btnNext: document.getElementById('btnNext'),
+                loader: document.getElementById('loadingOverlay'),
+                searchInput: document.getElementById('searchInput'),
+                searchBtn: document.getElementById('searchBtn'),
+                zenToggle: document.getElementById('zenToggle'),
+                zenExit: document.getElementById('zenExit'),
+                toast: document.getElementById('toast'),
+                body: document.body
+            },
+
+            init() {
+                // Verificar se os dados foram carregados do arquivo externo
+                if (typeof window.BIBLE_DATA !== 'undefined') {
+                    this.data = window.BIBLE_DATA;
+                    this.startEngine();
+                } else {
+                    this.el.loader.innerHTML = "<p style='color:red'>Erro: Arquivo biblia-dados.js não encontrado.</p>";
+                }
+            },
+
+            startEngine() {
+                this.populateBooks();
+                this.loadChapter(0, 0); // Começa em Gênesis 1
+                this.setupEvents();
+                
+                // Remove loader com fade out
+                setTimeout(() => {
+                    this.el.loader.style.opacity = '0';
+                    setTimeout(() => this.el.loader.style.display = 'none', 500);
+                }, 800);
+            },
+
+            populateBooks() {
+                this.el.bookSelect.innerHTML = '';
+                this.data.forEach((book, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = index;
+                    opt.textContent = book.name;
+                    this.el.bookSelect.appendChild(opt);
+                });
+            },
+
+            populateChapters(bookIdx) {
+                this.el.chapterSelect.innerHTML = '';
+                const book = this.data[bookIdx];
+                book.chapters.forEach((_, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = index;
+                    opt.textContent = `Capítulo ${index + 1}`;
+                    this.el.chapterSelect.appendChild(opt);
+                });
+            },
+
+            loadChapter(bookIdx, chapIdx) {
+                // Validações
+                if (bookIdx < 0 || bookIdx >= this.data.length) return;
+                const book = this.data[bookIdx];
+                if (chapIdx < 0 || chapIdx >= book.chapters.length) return;
+
+                // Atualizar Estado
+                this.state.bookIndex = bookIdx;
+                this.state.chapterIndex = chapIdx;
+
+                // Sincronizar UI
+                this.el.bookSelect.value = bookIdx;
+                
+                // Se mudou de livro, precisa refazer a lista de capítulos
+                if (this.el.chapterSelect.children.length !== book.chapters.length || 
+                    this.el.chapterSelect.children.length === 0) {
+                    this.populateChapters(bookIdx);
+                }
+                this.el.chapterSelect.value = chapIdx;
+
+                // Renderizar
+                this.el.displayTitle.textContent = `${book.name} ${chapIdx + 1}`;
+                this.el.bibleText.innerHTML = '';
+
+                // Voltar a exibir navegação (caso estivesse em modo busca)
+                document.querySelector('.nav-footer').style.display = 'flex';
+                document.querySelector('.chapter-header').style.display = 'block';
+
+                const verses = book.chapters[chapIdx];
+                verses.forEach((text, i) => {
+                    const verseNum = i + 1;
+                    const div = document.createElement('div');
+                    div.className = 'verse-box';
+                    div.innerHTML = `<span class="verse-number">${verseNum}</span><span class="verse-text">${text}</span>`;
+                    
+                    div.addEventListener('click', () => {
+                        this.copyToClipboard(text, `${book.name} ${chapIdx + 1}:${verseNum}`);
+                    });
+
+                    this.el.bibleText.appendChild(div);
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.updateNavButtons();
+            },
+
+            performSearch() {
+                const term = this.el.searchInput.value.toLowerCase().trim();
+                if (term.length < 3) {
+                    alert("Digite pelo menos 3 letras para buscar.");
+                    return;
+                }
+
+                this.el.bibleText.innerHTML = '<p style="text-align:center; color:#888;">Buscando...</p>';
+                this.el.displayTitle.textContent = `Busca: "${term}"`;
+                document.querySelector('.nav-footer').style.display = 'none'; // Esconde nav na busca
+
+                const results = [];
+                let count = 0;
+                const maxResults = 50; // Limite para performance
+
+                // Algoritmo de Busca Local
+                for (let b = 0; b < this.data.length; b++) {
+                    const book = this.data[b];
+                    for (let c = 0; c < book.chapters.length; c++) {
+                        const chapter = book.chapters[c];
+                        for (let v = 0; v < chapter.length; v++) {
+                            const verseText = chapter[v];
+                            if (verseText.toLowerCase().includes(term)) {
+                                results.push({
+                                    bookIdx: b,
+                                    chapIdx: c,
+                                    verseNum: v + 1,
+                                    text: verseText,
+                                    bookName: book.name
+                                });
+                                count++;
+                                if (count >= maxResults) break;
+                            }
+                        }
+                        if (count >= maxResults) break;
+                    }
+                    if (count >= maxResults) break;
+                }
+
+                // Renderizar Resultados
+                this.el.bibleText.innerHTML = '';
+                if (results.length === 0) {
+                    this.el.bibleText.innerHTML = '<p style="text-align:center; margin-top:20px;">Nenhum resultado encontrado.</p>';
+                } else {
+                    results.forEach(res => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <div class="search-ref">${res.bookName} ${res.chapIdx + 1}:${res.verseNum}</div>
+                            <div class="search-content">"${res.text}"</div>
+                        `;
+                        div.addEventListener('click', () => {
+                            this.loadChapter(res.bookIdx, res.chapIdx);
+                            // Scrollar até o versículo seria ideal, mas carregar o capitulo já ajuda
+                        });
+                        this.el.bibleText.appendChild(div);
+                    });
+                    
+                    if (count >= maxResults) {
+                        const limitMsg = document.createElement('div');
+                        limitMsg.style.textAlign = 'center';
+                        limitMsg.style.padding = '20px';
+                        limitMsg.style.color = '#666';
+                        limitMsg.textContent = `Mostrando os primeiros ${maxResults} resultados. Seja mais específico.`;
+                        this.el.bibleText.appendChild(limitMsg);
+                    }
+                }
+            },
+
+            updateNavButtons() {
+                const bIdx = this.state.bookIndex;
+                const cIdx = this.state.chapterIndex;
+                
+                // Lógica simples: desabilitar se for inicio de Genesis ou fim de Apocalipse
+                this.el.btnPrev.disabled = (bIdx === 0 && cIdx === 0);
+                
+                const lastBook = this.data.length - 1;
+                const lastChap = this.data[lastBook].chapters.length - 1;
+                this.el.btnNext.disabled = (bIdx === lastBook && cIdx === lastChap);
+            },
+
+            navigate(direction) {
+                let b = this.state.bookIndex;
+                let c = this.state.chapterIndex;
+
+                if (direction === 1) { // Próximo
+                    const chaptersInBook = this.data[b].chapters.length;
+                    if (c < chaptersInBook - 1) {
+                        c++;
+                    } else if (b < this.data.length - 1) {
+                        b++;
+                        c = 0;
+                    }
+                } else { // Anterior
+                    if (c > 0) {
+                        c--;
+                    } else if (b > 0) {
+                        b--;
+                        c = this.data[b].chapters.length - 1;
+                    }
+                }
+                this.loadChapter(b, c);
+            },
+
+            copyToClipboard(text, ref) {
+                const fullText = `"${text}"\n\n${ref} - Almeida Antiga\nMinistério Michel Breno`;
+                navigator.clipboard.writeText(fullText).then(() => {
+                    this.el.toast.classList.add('active');
+                    setTimeout(() => this.el.toast.classList.remove('active'), 2500);
+                });
+            },
+
+            toggleZen() {
+                this.state.isZen = !this.state.isZen;
+                if (this.state.isZen) {
+                    document.body.classList.add('zen-mode');
+                } else {
+                    document.body.classList.remove('zen-mode');
+                }
+            },
+
+            setupEvents() {
+                this.el.bookSelect.addEventListener('change', (e) => {
+                    this.populateChapters(parseInt(e.target.value));
+                    this.loadChapter(parseInt(e.target.value), 0);
+                });
+
+                this.el.chapterSelect.addEventListener('change', (e) => {
+                    this.loadChapter(this.state.bookIndex, parseInt(e.target.value));
+                });
+
+                this.el.btnPrev.addEventListener('click', () => this.navigate(-1));
+                this.el.btnNext.addEventListener('click', () => this.navigate(1));
+
+                this.el.zenToggle.addEventListener('click', () => this.toggleZen());
+                this.el.zenExit.addEventListener('click', () => this.toggleZen());
+
+                // Busca
+                this.el.searchBtn.addEventListener('click', () => this.performSearch());
+                this.el.searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.performSearch();
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.state.isZen) this.toggleZen();
+                });
+            }
+        };
+
+        // Iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            App.init();
+        });
+
+    </script>
+</body>
+</html>
