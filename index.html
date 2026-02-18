@@ -180,6 +180,16 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   border-bottom-right-radius: 50%;
 }
 
+/* CSS ESPECÍFICO PARA BÍBLIA (CARD QUADRADO) */
+#biblia .card {
+    aspect-ratio: 1 / 1; /* Garante que seja quadrado */
+    max-width: 350px;
+    margin: 0 auto;
+}
+#biblia .card img {
+    height: 100%; /* Ocupa toda a altura do quadrado */
+}
+
 .img-center { object-position: center !important; } 
 .img-top { object-position: top !important; }    
 
@@ -323,6 +333,15 @@ footer{
     <div class="card">
       <img src="https://ministeriomichelbreno.com.br/img/profetas.webp" alt="Escola de Profetas">
     </div>
+  </div>
+</section>
+
+<section id="biblia">
+  <h2 class="title">Bíblia</h2>
+  <div class="grid-cards" style="justify-items: center;">
+    <a href="https://ministeriomichelbreno.com.br/biblia/" target="_blank" class="card">
+      <img src="https://ministeriomichelbreno.com.br/img/biblia.webp" alt="Bíblia Online">
+    </a>
   </div>
 </section>
 
