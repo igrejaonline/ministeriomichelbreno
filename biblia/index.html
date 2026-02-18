@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sagradas Escrituras | Almeida Original</title>
+    <title>Sagradas Escrituras | Ministério Apostólico Michel Breno</title>
     
-    <meta name="description" content="Leia a Bíblia Sagrada na versão clássica de João Ferreira de Almeida. Ministério Michel Breno.">
+    <meta name="description" content="Leia a Bíblia Sagrada na versão clássica de João Ferreira de Almeida. Ministério Apostólico Michel Breno.">
+
+    <link rel="icon" type="image/jpeg" href="https://igrejaonline.github.io/ministeriomichelbreno/img/logo.jpeg">
+
+    <script data-goatcounter="https://ministeriomichelbreno.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +43,8 @@
             line-height: 1.8;
             overflow-x: hidden;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Scrollbar */
@@ -75,14 +81,15 @@
         .site-title h1 {
             font-family: var(--font-title);
             color: var(--gold-ancient);
-            font-size: 1.4rem;
-            letter-spacing: 2px;
+            font-size: 1.3rem; /* Ajuste leve para caber o nome maior */
+            letter-spacing: 1px;
+            line-height: 1.3;
         }
         .site-title span {
             display: block;
             font-size: 0.7rem;
             color: var(--text-muted);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             margin-top: 2px;
         }
 
@@ -93,6 +100,7 @@
             width: 100%;
             justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .neo-select, .neo-input {
@@ -123,21 +131,27 @@
             cursor: pointer;
         }
 
-        .zen-btn {
+        .icon-btn {
             background: transparent;
             border: 1px solid #333;
             color: var(--text-muted);
             width: 45px;
+            height: 45px; /* Altura fixa para alinhar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none; /* Para o link 'a' funcionar como botão */
         }
-        .zen-btn:hover { color: var(--gold-ancient); border-color: var(--gold-ancient); }
+        .icon-btn:hover { color: var(--gold-ancient); border-color: var(--gold-ancient); }
 
         /* ================= LEITURA ================= */
         main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px 100px 20px;
+            padding: 40px 20px 60px 20px;
+            flex: 1; /* Empurra o rodapé para baixo */
         }
 
         .chapter-header { text-align: center; margin-bottom: 50px; }
@@ -213,6 +227,18 @@
         .nav-btn:hover { background: var(--gold-ancient); color: #000; }
         .nav-btn:disabled { border-color: #333; color: #444; cursor: not-allowed; background: transparent; }
 
+        /* ================= FOOTER (Novo) ================= */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            font-family: var(--font-title);
+            background: #0a0a0a;
+            margin-top: auto;
+        }
+
         /* ================= MODOS & UTILS ================= */
         /* Modo Zen */
         body.zen-mode header { transform: translateY(-100%); }
@@ -260,6 +286,8 @@
             .neo-input { width: 100%; }
             .verse-text { font-size: 1.1rem; }
             .chapter-title { font-size: 1.8rem; }
+            /* Ajuste para botões ficarem lado a lado no mobile */
+            .control-buttons { display: flex; gap: 10px; width: 100%; justify-content: center; }
         }
     </style>
 
@@ -276,11 +304,17 @@
     <header>
         <div class="header-container">
             <div class="site-title">
-                <h1>Sagradas Escrituras</h1>
-                <span>Ministério Michel Breno</span>
+                <h1>Ministério Apostólico Michel Breno</h1>
+                <span>Sagradas Escrituras</span>
             </div>
 
             <div class="controls">
+                <div class="control-buttons">
+                    <a href="https://ministeriomichelbreno.com.br/" class="icon-btn" title="Voltar ao Site Principal">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+
                 <select id="bookSelect" class="neo-select"></select>
                 <select id="chapterSelect" class="neo-select"></select>
                 
@@ -289,9 +323,11 @@
                     <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
 
-                <button id="zenToggle" class="zen-btn" title="Modo Leitura (F11)">
-                    <i class="fas fa-expand"></i>
-                </button>
+                <div class="control-buttons">
+                    <button id="zenToggle" class="icon-btn" title="Modo Leitura (F11)">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -313,15 +349,19 @@
         </nav>
     </main>
 
+    <footer class="site-footer">
+        Ministério Apostólico Michel Breno 2025 Todos os direitos reservados.
+    </footer>
+
     <div id="toast" class="toast">
         <i class="fas fa-feather-alt"></i> Versículo Copiado
     </div>
 
     <script>
         /**
-         * NEO CORE ENGINE v2.1
-         * Integrado com biblia-dados.js externo
-         * + Correção de Nomes dos Livros (Visual)
+         * NEO CORE ENGINE v2.2 (Final Release)
+         * - Branding Atualizado
+         * - Correção Visual de Nomes
          */
 
         const App = {
@@ -558,7 +598,8 @@
             },
 
             copyToClipboard(text, ref) {
-                const fullText = `"${text}"\n\n${ref} - Almeida Antiga\nMinistério Michel Breno`;
+                // Branding Atualizado no Copiar e Colar
+                const fullText = `"${text}"\n\n${ref} - Almeida Antiga\nMinistério Apostólico Michel Breno`;
                 navigator.clipboard.writeText(fullText).then(() => {
                     this.el.toast.classList.add('active');
                     setTimeout(() => this.el.toast.classList.remove('active'), 2500);
