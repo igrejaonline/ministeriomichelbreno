@@ -319,12 +319,20 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.0
+         * NEO CORE ENGINE v2.1
          * Integrado com biblia-dados.js externo
+         * + Correção de Nomes dos Livros (Visual)
          */
 
         const App = {
             data: null,
+            // LISTA MESTRA DE NOMES EM PORTUGUÊS (Para Correção Visual)
+            bookNamesPT: [
+                "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio", "Josué", "Juízes", "Rute", 
+                "1 Samuel", "2 Samuel", "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras", "Neemias", "Ester", "Jó", "Salmos", "Provérbios", "Eclesiastes", "Cânticos", "Isaías", "Jeremias", "Lamentações", "Ezequiel", "Daniel", "Oseias", "Joel", "Amós", "Obadias", "Jonas", "Miqueias", "Naum", "Habacuque", "Sofonias", "Ageu", "Zacarias", "Malaquias",
+                "Mateus", "Marcos", "Lucas", "João", "Atos", "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas", "Efésios", "Filipenses", "Colossenses", "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo", "2 Timóteo", "Tito", "Filemon", "Hebreus", "Tiago", "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João", "Judas", "Apocalipse"
+            ],
+            
             state: {
                 bookIndex: 0,
                 chapterIndex: 0,
@@ -368,12 +376,20 @@
                 }, 800);
             },
 
+            // Recupera o nome correto (Da lista PT ou Original)
+            getBookName(index) {
+                if (this.bookNamesPT[index]) return this.bookNamesPT[index];
+                if (this.data[index] && this.data[index].name) return this.data[index].name;
+                return "Livro Desconhecido";
+            },
+
             populateBooks() {
                 this.el.bookSelect.innerHTML = '';
                 this.data.forEach((book, index) => {
                     const opt = document.createElement('option');
                     opt.value = index;
-                    opt.textContent = book.name;
+                    // Correção: Usa o nome traduzido
+                    opt.textContent = this.getBookName(index);
                     this.el.bookSelect.appendChild(opt);
                 });
             },
@@ -409,8 +425,9 @@
                 }
                 this.el.chapterSelect.value = chapIdx;
 
-                // Renderizar
-                this.el.displayTitle.textContent = `${book.name} ${chapIdx + 1}`;
+                // Renderizar Título (Usando nome corrigido)
+                const correctedName = this.getBookName(bookIdx);
+                this.el.displayTitle.textContent = `${correctedName} ${chapIdx + 1}`;
                 this.el.bibleText.innerHTML = '';
 
                 // Voltar a exibir navegação (caso estivesse em modo busca)
@@ -425,7 +442,7 @@
                     div.innerHTML = `<span class="verse-number">${verseNum}</span><span class="verse-text">${text}</span>`;
                     
                     div.addEventListener('click', () => {
-                        this.copyToClipboard(text, `${book.name} ${chapIdx + 1}:${verseNum}`);
+                        this.copyToClipboard(text, `${correctedName} ${chapIdx + 1}:${verseNum}`);
                     });
 
                     this.el.bibleText.appendChild(div);
@@ -453,6 +470,8 @@
                 // Algoritmo de Busca Local
                 for (let b = 0; b < this.data.length; b++) {
                     const book = this.data[b];
+                    const correctedName = this.getBookName(b); // Usa nome em PT
+
                     for (let c = 0; c < book.chapters.length; c++) {
                         const chapter = book.chapters[c];
                         for (let v = 0; v < chapter.length; v++) {
@@ -463,7 +482,7 @@
                                     chapIdx: c,
                                     verseNum: v + 1,
                                     text: verseText,
-                                    bookName: book.name
+                                    bookName: correctedName // Salva nome corrigido
                                 });
                                 count++;
                                 if (count >= maxResults) break;
@@ -488,7 +507,6 @@
                         `;
                         div.addEventListener('click', () => {
                             this.loadChapter(res.bookIdx, res.chapIdx);
-                            // Scrollar até o versículo seria ideal, mas carregar o capitulo já ajuda
                         });
                         this.el.bibleText.appendChild(div);
                     });
