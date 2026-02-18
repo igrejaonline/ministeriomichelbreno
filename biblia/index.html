@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sagradas Escrituras | Ministério Apostólico Michel Breno</title>
     
     <meta name="description" content="Leia a Bíblia Sagrada na versão clássica de João Ferreira de Almeida. Ministério Apostólico Michel Breno.">
@@ -60,7 +60,7 @@
 
         /* ================= HEADER ================= */
         header {
-            background: rgba(15, 15, 15, 0.95);
+            background: rgba(15, 15, 15, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: var(--border-gold);
             padding: 15px 0;
@@ -68,6 +68,7 @@
             top: 0;
             z-index: 100;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         .header-container {
@@ -87,7 +88,7 @@
         .site-title h1 {
             font-family: var(--font-title);
             color: var(--gold-ancient);
-            font-size: 1.3rem; /* Ajuste leve para caber o nome maior */
+            font-size: 1.3rem;
             letter-spacing: 1px;
             line-height: 1.3;
         }
@@ -99,7 +100,7 @@
             margin-top: 2px;
         }
 
-        /* Controles */
+        /* Controles (Desktop Padrão) */
         .controls {
             display: flex;
             gap: 10px;
@@ -142,13 +143,14 @@
             border: 1px solid #333;
             color: var(--text-muted);
             width: 45px;
-            height: 45px; /* Altura fixa para alinhar */
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: 0.3s;
-            text-decoration: none; /* Para o link 'a' funcionar como botão */
+            text-decoration: none;
+            border-radius: 2px;
         }
         .icon-btn:hover { color: var(--gold-ancient); border-color: var(--gold-ancient); }
 
@@ -157,7 +159,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px 60px 20px;
-            flex: 1; /* Empurra o rodapé para baixo */
+            flex: 1;
         }
 
         .chapter-header { text-align: center; margin-bottom: 50px; }
@@ -286,13 +288,52 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        /* ================================================================
+           MOBILE OPTIMIZATION (O Fix da Tela)
+           ================================================================ */
         @media (max-width: 768px) {
-            .controls { flex-direction: column; }
-            .search-wrapper { width: 100%; }
-            .neo-input { width: 100%; }
-            .verse-text { font-size: 1.1rem; }
+            /* 1. Header Mais Compacto */
+            .header-container {
+                padding: 10px;
+                gap: 5px;
+            }
+
+            /* 2. Título Reduzido */
+            .site-title h1 { font-size: 1rem; margin-bottom: 2px; }
+            .site-title span { display: none; } /* Oculta subtítulo no mobile */
+
+            /* 3. Reorganização dos Controles (Layout de App) */
+            .controls {
+                flex-direction: row; /* Força linha horizontal */
+                flex-wrap: wrap;     /* Permite quebra organizada */
+                gap: 5px;
+                justify-content: space-between;
+            }
+
+            /* 4. Distribuição Inteligente */
+            .control-buttons {
+                flex: 0 0 auto; /* Botões ocupam só o espaço necessário */
+            }
+            
+            .neo-select {
+                flex: 1; /* Selects crescem para ocupar o meio */
+                min-width: 0; /* Evita que estourem a tela */
+                padding: 8px 5px; /* Padding menor */
+                font-size: 0.9rem;
+                text-overflow: ellipsis;
+            }
+
+            /* 5. Busca na linha de baixo (Full width) */
+            .search-wrapper {
+                width: 100%;
+                order: 10; /* Força ir para o final */
+                margin-top: 5px;
+            }
+            
+            /* Ajustes finos */
+            .icon-btn { width: 38px; height: 38px; }
             .chapter-title { font-size: 1.8rem; }
-            .control-buttons { display: flex; gap: 10px; width: 100%; justify-content: center; }
+            .chapter-header { margin-bottom: 30px; }
         }
     </style>
 
@@ -321,17 +362,17 @@
                 </div>
 
                 <select id="bookSelect" class="neo-select"></select>
-                <select id="chapterSelect" class="neo-select"></select>
+                <select id="chapterSelect" class="neo-select" style="max-width: 70px;"></select>
                 
-                <div class="search-wrapper">
-                    <input type="text" id="searchInput" class="neo-input" placeholder="Buscar palavra...">
-                    <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
-                </div>
-
                 <div class="control-buttons">
-                    <button id="zenToggle" class="icon-btn" title="Modo Leitura (F11)">
+                    <button id="zenToggle" class="icon-btn" title="Modo Leitura">
                         <i class="fas fa-expand"></i>
                     </button>
+                </div>
+
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="neo-input" placeholder="Buscar..." style="width: 100%;">
+                    <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
         </div>
@@ -364,7 +405,7 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.2 (Final Release)
+         * NEO CORE ENGINE v2.3 (Mobile Optimized)
          */
 
         const App = {
@@ -443,7 +484,8 @@
                 book.chapters.forEach((_, index) => {
                     const opt = document.createElement('option');
                     opt.value = index;
-                    opt.textContent = `Capítulo ${index + 1}`;
+                    opt.textContent = `${index + 1}`; // Apenas número no mobile para economizar espaço
+                    // No desktop poderia ser "Capítulo X", mas só número é mais limpo
                     this.el.chapterSelect.appendChild(opt);
                 });
             },
