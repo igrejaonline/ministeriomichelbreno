@@ -58,37 +58,35 @@
         ::-webkit-scrollbar-track { background: var(--bg-onyx); }
         ::-webkit-scrollbar-thumb { background: var(--gold-ancient); border-radius: 4px; border: 2px solid var(--bg-onyx); }
 
+        /* Barra de Progresso de Leitura (Topo) */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 9999; /* Fica acima de tudo */
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #888; /* Cor Cinza solicitada */
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
         /* ================= HEADER ================= */
         header {
             background: rgba(15, 15, 15, 0.98);
             backdrop-filter: blur(10px);
-            /* Removemos a borda fixa antiga, pois a barra de progresso fará esse papel */
-            /* border-bottom: var(--border-gold); */
-            padding: 15px 0 20px 0; /* Espaço extra embaixo para a barra */
+            border-bottom: var(--border-gold);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-        }
-
-        /* BARRA DE PROGRESSO INTEGRADA (Estilo "Thick & Elegant") */
-        .progress-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px; /* Barra grossa */
-            background: rgba(255, 255, 255, 0.05); /* Fundo sutil do trilho */
-            z-index: 101;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #666; /* Cinza Sólido e Elegante */
-            width: 0%;
-            transition: width 0.1s ease-out;
-            box-shadow: 0 0 10px rgba(100, 100, 100, 0.3); /* Brilho leve */
         }
 
         .header-container {
@@ -191,7 +189,7 @@
             margin-bottom: 10px;
         }
 
-        /* Estilo do Versículo */
+        /* Estilo do Versículo - CORRIGIDO PARA PERMITIR SELEÇÃO */
         .verse-box {
             margin-bottom: 15px;
             padding: 8px 15px;
@@ -200,8 +198,8 @@
             cursor: pointer;
             position: relative;
             line-height: 1.9;
-            /* Permite seleção mas avisa que é clicável */
-            outline: none;
+            /* Permite seleção de texto normal */
+            outline: none; /* Remove borda de foco padrão */
         }
 
         .verse-box:hover {
@@ -332,6 +330,10 @@
 </head>
 <body>
 
+    <div class="progress-container">
+        <div class="progress-bar" id="readingProgressBar"></div>
+    </div>
+
     <div id="loadingOverlay">
         <div class="spinner"></div>
         <p>Abrindo as Escrituras...</p>
@@ -366,10 +368,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="readingProgressBar"></div>
-        </div>
     </header>
 
     <button id="zenExit" class="zen-exit"><i class="fas fa-compress"></i></button>
@@ -399,7 +397,7 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.7 (Thick & Elegant Progress Bar)
+         * NEO CORE ENGINE v2.6 (Multi-Select Enabled)
          */
 
         const App = {
@@ -515,7 +513,7 @@
                     const verseNum = i + 1;
                     const div = document.createElement('div');
                     div.className = 'verse-box';
-                    // ADICIONADO role="button" e tabindex="0"
+                    // ADICIONADO role="button" e tabindex="0" para indicar interatividade
                     div.setAttribute('role', 'button');
                     div.setAttribute('tabindex', '0');
                     div.innerHTML = `<span class="verse-number">${verseNum}</span><span class="verse-text">${text}</span>`;
