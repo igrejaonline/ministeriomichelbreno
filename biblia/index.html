@@ -58,35 +58,35 @@
         ::-webkit-scrollbar-track { background: var(--bg-onyx); }
         ::-webkit-scrollbar-thumb { background: var(--gold-ancient); border-radius: 4px; border: 2px solid var(--bg-onyx); }
 
-        /* Barra de Progresso de Leitura (Topo) */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: transparent;
-            z-index: 9999; /* Fica acima de tudo */
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #888; /* Cor Cinza solicitada */
-            width: 0%;
-            transition: width 0.1s ease-out;
-        }
-
         /* ================= HEADER ================= */
         header {
             background: rgba(15, 15, 15, 0.98);
             backdrop-filter: blur(10px);
-            border-bottom: var(--border-gold);
-            padding: 15px 0;
+            padding: 15px 0 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        /* BARRA DE PROGRESSO INTEGRADA */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px; 
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 101;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #666; 
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(100, 100, 100, 0.3);
         }
 
         .header-container {
@@ -189,7 +189,7 @@
             margin-bottom: 10px;
         }
 
-        /* Estilo do Versículo - CORRIGIDO PARA PERMITIR SELEÇÃO */
+        /* Estilo do Versículo */
         .verse-box {
             margin-bottom: 15px;
             padding: 8px 15px;
@@ -198,8 +198,7 @@
             cursor: pointer;
             position: relative;
             line-height: 1.9;
-            /* Permite seleção de texto normal */
-            outline: none; /* Remove borda de foco padrão */
+            outline: none;
         }
 
         .verse-box:hover {
@@ -330,10 +329,6 @@
 </head>
 <body>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="readingProgressBar"></div>
-    </div>
-
     <div id="loadingOverlay">
         <div class="spinner"></div>
         <p>Abrindo as Escrituras...</p>
@@ -368,6 +363,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="readingProgressBar"></div>
+        </div>
     </header>
 
     <button id="zenExit" class="zen-exit"><i class="fas fa-compress"></i></button>
@@ -397,7 +396,7 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.6 (Multi-Select Enabled)
+         * NEO CORE ENGINE v2.8 (Memory Storage + Multi-Select)
          */
 
         const App = {
@@ -440,17 +439,26 @@
 
             startEngine() {
                 this.populateBooks();
-                this.loadChapter(0, 0);
+                
+                // Recupera a memória do último capítulo lido do WebStorage
+                let savedBook = parseInt(localStorage.getItem('neoBibleBook')) || 0;
+                let savedChap = parseInt(localStorage.getItem('neoBibleChapter')) || 0;
+                
+                // Validação de segurança para garantir que os dados salvos ainda existem no array
+                if (savedBook >= this.data.length || savedBook < 0) savedBook = 0;
+                if (this.data[savedBook]) {
+                    if (savedChap >= this.data[savedBook].chapters.length || savedChap < 0) savedChap = 0;
+                }
+
+                this.loadChapter(savedBook, savedChap);
                 this.setupEvents();
                 
-                // Remove loader
                 setTimeout(() => {
                     this.el.loader.style.opacity = '0';
                     setTimeout(() => this.el.loader.style.display = 'none', 500);
                 }, 800);
             },
 
-            // --- Lógica da Barra de Progresso ---
             updateProgressBar() {
                 const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -493,6 +501,10 @@
                 this.state.bookIndex = bookIdx;
                 this.state.chapterIndex = chapIdx;
 
+                // Salva na memória do navegador (WebStorage)
+                localStorage.setItem('neoBibleBook', bookIdx);
+                localStorage.setItem('neoBibleChapter', chapIdx);
+
                 this.el.bookSelect.value = bookIdx;
                 
                 if (this.el.chapterSelect.children.length !== book.chapters.length || 
@@ -513,7 +525,6 @@
                     const verseNum = i + 1;
                     const div = document.createElement('div');
                     div.className = 'verse-box';
-                    // ADICIONADO role="button" e tabindex="0" para indicar interatividade
                     div.setAttribute('role', 'button');
                     div.setAttribute('tabindex', '0');
                     div.innerHTML = `<span class="verse-number">${verseNum}</span><span class="verse-text">${text}</span>`;
