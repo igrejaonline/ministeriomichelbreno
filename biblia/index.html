@@ -189,6 +189,7 @@
             margin-bottom: 10px;
         }
 
+        /* Estilo do Versículo - CORRIGIDO PARA PERMITIR SELEÇÃO */
         .verse-box {
             margin-bottom: 15px;
             padding: 8px 15px;
@@ -197,6 +198,8 @@
             cursor: pointer;
             position: relative;
             line-height: 1.9;
+            /* Permite seleção de texto normal */
+            outline: none; /* Remove borda de foco padrão */
         }
 
         .verse-box:hover {
@@ -210,7 +213,6 @@
             font-size: 0.9rem;
             margin-right: 10px;
             font-weight: bold;
-            user-select: none;
         }
 
         .verse-text { font-size: 1.25rem; color: #e0e0e0; }
@@ -395,7 +397,7 @@
 
     <script>
         /**
-         * NEO CORE ENGINE v2.4 (Progress Bar Restored)
+         * NEO CORE ENGINE v2.6 (Multi-Select Enabled)
          */
 
         const App = {
@@ -455,7 +457,6 @@
                 const scrollPercentage = (scrollTop / scrollHeight) * 100;
                 this.el.progressBar.style.width = scrollPercentage + "%";
             },
-            // ------------------------------------
 
             getBookName(index) {
                 if (this.bookNamesPT[index]) return this.bookNamesPT[index];
@@ -512,6 +513,9 @@
                     const verseNum = i + 1;
                     const div = document.createElement('div');
                     div.className = 'verse-box';
+                    // ADICIONADO role="button" e tabindex="0" para indicar interatividade
+                    div.setAttribute('role', 'button');
+                    div.setAttribute('tabindex', '0');
                     div.innerHTML = `<span class="verse-number">${verseNum}</span><span class="verse-text">${text}</span>`;
                     
                     div.addEventListener('click', () => {
@@ -521,8 +525,8 @@
                     this.el.bibleText.appendChild(div);
                 });
 
-                window.scrollTo({ top: 0, behavior: 'auto' }); // Scroll imediato para o topo
-                this.updateProgressBar(); // Reseta a barra
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                this.updateProgressBar();
                 this.updateNavButtons();
             },
 
@@ -611,9 +615,7 @@
             },
 
             setupEvents() {
-                // Evento de Scroll para a barra de progresso
                 window.addEventListener('scroll', () => this.updateProgressBar());
-
                 this.el.bookSelect.addEventListener('change', (e) => {
                     this.populateChapters(parseInt(e.target.value));
                     this.loadChapter(parseInt(e.target.value), 0);
