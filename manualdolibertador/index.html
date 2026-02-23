@@ -1,1 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Manual do Libertador - O Dossiê Definitivo</title>
+    
+    <link rel="icon" href="https://ministeriomichelbreno.com.br/manualdolibertador/capa.webp" type="image/webp">
 
+    <meta property="og:title" content="Manual do Libertador - O Dossiê Definitivo">
+    <meta property="og:description" content="O dossiê definitivo e inédito que mapeia as 16 entidades malignas mais comuns no Brasil e expõe suas máscaras culturais.">
+    <meta property="og:image" content="https://ministeriomichelbreno.com.br/manualdolibertador/capa.webp">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script data-goatcounter="https://ministeriomichelbreno.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        // fbq('init', 'SEU_ID_DO_PIXEL_AQUI'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=SEU_ID_DO_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript>
+    <style>
+        /* ========================================== */
+        /* 🎨 VARIÁVEIS DE COR E ESTILO               */
+        /* ========================================== */
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --primary-red: #8b0000;
+            --primary-red-hover: #a30000;
+            --accent-gold: #c5a059;
+            --text-light: #e0e0e0;
+            --text-white: #ffffff;
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* ========================================== */
+        /* 🛠️ RESET E CONFIGURAÇÕES GERAIS            */
+        /* ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            color: var(--text-white);
+            line-height: 1.2;
+        }
+
+        .highlight-gold { color: var(--accent-gold); }
+        .highlight-red { color: var(--primary-red); }
+
+        /* Botões CTA */
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red), #5c0000);
+            color: var(--text-white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 18px 32px;
+            border-radius: 4px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            background: linear-gradient(135deg, var(--primary-red-hover), #7a0000);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+            transform: translateY(-2px);
+            border-color: var(--accent-gold);
+        }
+
+        /* Efeito de Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================== */
+        /* 🔥 SEÇÃO 1: A PROMESSA (HERO)              */
+        /* ========================================== */
+        .hero {
+            padding: 60px 0 80px;
+            background: radial-gradient(circle at top, #1a0505 0%, var(--bg-dark) 70%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text .super-promise {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+        }
+
+        .hero-image img {
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin: 0 auto;
+        }
+
+        /* ========================================== */
+        /* 🕵️ SEÇÃO 2: O PROBLEMA                     */
+        /* ========================================== */
+        .problem {
+            padding: 80px 0;
+            background-color: #050505;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .problem h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .problem p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #a0a0a0;
+        }
+
+        /* ========================================== */
+        /* 📖 SEÇÃO 3: O QUE VOCÊ VAI DESCOBRIR       */
+        /* ========================================== */
+        .discover {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+
+        .discover h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .discover > p {
+            text-align: center;
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .discover-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .discover-list li {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .discover-list li::before {
+            content: '⚔️';
+            font-size: 1.2rem;
+            filter: grayscale(100%) sepia(100%) hue-rotate(35deg) saturate(300%) brightness(0.8);
+        }
+
+        .discover-list strong {
+            color: var(--text-white);
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+        }
+
+        /* ========================================== */
+        /* 🎯 SEÇÃO 4: PARA QUEM É ESTE MANUAL?       */
+        /* ========================================== */
+        .target {
+            padding: 80px 0;
+            background: #080808;
+            background-image: radial-gradient(rgba(197, 160, 89, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .target h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .target-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .target-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .target-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .target-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .target-card p {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+        }
+
+        /* ========================================== */
+        /* 💳 SEÇÃO 5: OFERTA FINAL E GARANTIA        */
+        /* ========================================== */
+        .offer {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #050505 0%, #1a0000 100%);
+        }
+
+        .offer h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .offer p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .guarantee-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed var(--accent-gold);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .guarantee-box img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .price-box {
+            margin-bottom: 30px;
+        }
+
+        .price-box span {
+            display: block;
+            color: var(--accent-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .price-box .price {
+            font-size: 3.5rem;
+            font-family: var(--font-title);
+            color: var(--text-white);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* ========================================== */
+        /* 📱 RESPONSIVIDADE (DESKTOP)                */
+        /* ========================================== */
+        @media (min-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 60px;
+            }
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+            .hero-text {
+                text-align: left;
+            }
+            .cta-btn {
+                width: auto;
+                padding: 20px 40px;
+            }
+            .target-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .guarantee-box {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .target-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <span class="super-promise">BEM-VINDO AO CAMPO DE BATALHA REAL.</span>
+                <h1>A ignorância espiritual não é uma <span class="highlight-red">bênção</span>; é uma brecha mortal.</h1>
+                <p>O dossiê definitivo e inédito que mapeia as 16 entidades malignas mais comuns no Brasil e expõe suas máscaras culturais à luz da Palavra de Deus.</p>
+                <a href="https://pay.kiwify.com.br/A6BzIig" class="cta-btn">🛡️ QUERO TER ACESSO AO MANUAL AGORA</a>
+            </div>
+            <div class="hero-image reveal">
+                <img src="https://ministeriomichelbreno.com.br/manualdolibertador/capa.webp" alt="Capa Manual do Libertador">
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container reveal">
+            <h2>O inimigo opera há milênios com uma estratégia devastadora: <span class="highlight-gold">A Camuflagem.</span></h2>
+            <p>Satanás não pode criar, ele apenas corrompe. As entidades que escravizam vidas não se apresentam como demônios, mas se escondem por trás do "folclore", da "tradição familiar" e da "religiosidade inofensiva". Para o libertador eficaz, conhecer a face do inimigo é o primeiro passo para a vitória. Neste relatório, nós removemos o véu.</p>
+        </div>
+    </section>
+
+    <section class="discover">
+        <div class="container reveal">
+            <h2>O que tem dentro do Dossiê?</h2>
+            <p>Uma obra inédita com 97 páginas de puro conteúdo tático e estratégico.</p>
+            
+            <ul class="discover-list">
+                <li class="reveal">
+                    <div>
+                        <strong>16 Entidades Mapeadas:</strong>
+                        <span>A face crua dos principados e potestades que atuam no Brasil.</span>
+                    </div>
+                </li>
+                <li class="reveal">
+                    <div>
+                        <strong>Material 100% Ilustrado:</strong>
+                        <span>Identificação visual rápida para não haver engano no mundo espiritual.</span>
+                    </div>
+                </li>
+                <li class="reveal">
+                    <div>
+                        <strong>Premissas de Combate:</strong>
+                        <span>Estratégias reais de libertação para ministérios e intercessores.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="target">
+        <div class="container reveal">
+            <h2>Quem precisa deste conhecimento urgente?</h2>
+            <div class="target-grid">
+                <div class="target-card reveal">
+                    <span class="icon">📖</span>
+                    <h3>Pastores e Líderes</h3>
+                    <p>Para purificar o altar e discipular com autoridade.</p>
+                </div>
+                <div class="target-card reveal">
+                    <span class="icon">⚡</span>
+                    <h3>Ministros de Libertação</h3>
+                    <p>Para agir com precisão cirúrgica contra as castas de demônios.</p>
+                </div>
+                <div class="target-card reveal">
+                    <span class="icon">🛡️</span>
+                    <h3>Intercessores</h3>
+                    <p>Para orar com alvos certos e destruir fortalezas.</p>
+                </div>
+                <div class="target-card reveal">
+                    <span class="icon">⚔️</span>
+                    <h3>Cristãos em Geral</h3>
+                    <p>Que desejam maturidade, blindagem espiritual para sua casa e discernimento de espíritos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer">
+        <div class="container reveal">
+            <h2>Assuma o seu posto na batalha.</h2>
+            <p>O acesso ao formato digital (PDF) é imediato assim que o pagamento for aprovado. Você poderá ler no celular, tablet ou computador.</p>
+            
+            <div class="price-box reveal">
+                <span>Acesso Imediato ao Dossiê</span>
+                <div class="price">R$ 70,00</div> 
+            </div>
+
+            <a href="https://pay.kiwify.com.br/A6BzIig" class="cta-btn reveal">⚔️ GARANTIR MEU MANUAL DO LIBERTADOR</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Manual do Libertador. Ministério Apostólico Michel Breno. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica de Scroll Reveal (Fade in dos elementos ao rolar a página)
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            // Executa na carga inicial
+            revealOnScroll();
+            
+            // Executa no evento de rolagem
+            window.addEventListener('scroll', revealOnScroll);
+        });
+    </script>
+</body>
+</html>
