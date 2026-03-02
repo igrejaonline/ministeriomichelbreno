@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola de Profetas - Apóstolo Michel Breno</title>
 
+    <script data-goatcounter="https://ministeriomichelbreno.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <link rel="icon" type="image/jpeg" href="https://ministeriomichelbreno.com.br/profetas/profetas.webp">
+
+    <meta name="description" content="Organize o seu chamado profético. A Escola de Profetas foi criada para trazer direção, clareza e estrutura para o que Deus já colocou em você.">
+    <meta name="keywords" content="escola de profetas, ministério profético, dom de profecia, chamado profético, apóstolo michel breno, ativação profética">
+    <meta property="og:title" content="Escola de Profetas - Apóstolo Michel Breno">
+    <meta property="og:description" content="Saia da confusão espiritual e entre em uma estação de preparo para o seu chamado profético.">
+    <meta property="og:image" content="https://ministeriomichelbreno.com.br/profetas/profetas.webp">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           01. RESET E VARIÁVEIS GERAIS
+           ========================================= */
+        :root {
+            --bg-dark: #050505;
+            --bg-card: rgba(20, 20, 20, 0.7);
+            --text-light: #F5F5F5;
+            --text-muted: #A0A0A0;
+            --gold: #D4AF37;
+            --fire-light: #FF8C00;
+            --fire-dark: #FF4500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================
+           02. UTILITÁRIOS E BOTÕES
+           ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .highlight-gold { color: var(--gold); }
+        .highlight-fire { color: var(--fire-dark); }
+
+        .cta-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--fire-dark) 0%, var(--fire-light) 100%);
+            color: #FFFFFF;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 32px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 69, 0, 0.6);
+            background: linear-gradient(135deg, #E63E00 0%, #FF9D2E 100%);
+        }
+
+        /* Animações de Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           03. SEÇÃO 1: HERO (A PROMESSA)
+           ========================================= */
+        .hero {
+            padding: 80px 0 60px;
+            position: relative;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 60%), 
+                        radial-gradient(circle at bottom left, rgba(255, 69, 0, 0.05), transparent 60%);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-text .super-promessa {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+
+        /* AJUSTE REALIZADO AQUI PARA REMOVER CONTORNO QUADRADO */
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 50%; /* Garante formato redondo perfeito */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            /* border: 1px solid rgba(212, 175, 55, 0.2); <- REMOVIDO */
+            position: relative;
+            /* Garante que a imagem não vaze o container redondo */
+            object-fit: cover; 
+            aspect-ratio: 1/1;
+        }
+
+        /* Efeito de brilho sutil atrás da imagem */
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            background: radial-gradient(circle, rgba(255,69,0,0.15) 0%, transparent 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        /* =========================================
+           04. SEÇÃO 2: IDENTIFICAÇÃO
+           ========================================= */
+        .identificacao {
+            padding: 80px 0;
+            background-color: #080808;
+            text-align: center;
+        }
+
+        .identificacao h2 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            color: var(--gold);
+        }
+
+        .identificacao p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           05. SEÇÃO 3: A SOLUÇÃO
+           ========================================= */
+        .solucao {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #080808, var(--bg-dark));
+        }
+
+        .solucao h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .solucao p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* =========================================
+           06. SEÇÃO 4: O QUE VOCÊ VAI RECEBER
+           ========================================= */
+        .entregaveis {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .entregaveis h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--gold);
+        }
+
+        .grid-entregaveis {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #FFF;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           07. SEÇÃO 5: OFERTA FINAL
+           ========================================= */
+        .oferta {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1), transparent 70%);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .oferta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .oferta p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .price-box {
+            margin-bottom: 40px;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .price-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* =========================================
+           08. MEDIA QUERIES (DESKTOP)
+           ========================================= */
+        @media (min-width: 992px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                justify-content: space-between;
+            }
+            .hero-text {
+                flex: 1;
+                max-width: 600px;
+            }
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            .hero-image-wrapper {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+            .cta-btn {
+                margin: 0; /* Alinha à esquerda no desktop na seção Hero */
+            }
+            .oferta .cta-btn {
+                margin: 0 auto; /* Mantém centralizado na seção final */
+            }
+            .grid-entregaveis {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <div class="hero-text">
+                <span class="super-promessa">CHEGOU A SUA ESTAÇÃO DE PREPARO.</span>
+                <h1>O seu chamado <br>não precisa mais <br><span class="highlight-gold">ser confuso.</span></h1>
+                <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">Traga estrutura e clareza para a voz de Deus em você.</p>
+                <a href="https://pay.kiwify.com.br/lhH7ZkO" class="cta-btn">QUERO ESTRUTURAR MEU CHAMADO AGORA</a>
+            </div>
+            <div class="hero-image-wrapper fade-in">
+                <img src="https://ministeriomichelbreno.com.br/profetas/profetas.webp" alt="Escola de Profetas" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="identificacao">
+        <div class="container fade-in">
+            <h2>Você se identifica com isso?</h2>
+            <p>Se você tem o chamado para profeta de ofício, já viveu experiências sobrenaturais reais, percebe que Deus fala, mostra e direciona a sua vida... mas ainda sente falta de direção, clareza e estrutura no seu chamado. Você vê o mundo espiritual, mas muitas vezes se sente perdido com o que recebe.</p>
+        </div>
+    </section>
+
+    <section class="solucao">
+        <div class="container fade-in">
+            <h2>É hora de entrar em uma <span class="highlight-gold">nova estação.</span></h2>
+            <p>A Escola de Profetas foi criada exatamente para resolver isso: organizar o que já está em você, aquilo que Deus mesmo colocou. Nosso objetivo é fazer com que o seu chamado deixe de ser confuso e se torne consciente, maduro e firme. Você não vai apenas "sentir", você vai aprender a administrar a revelação com sabedoria.</p>
+        </div>
+    </section>
+
+    <section class="entregaveis">
+        <div class="container">
+            <h2 class="fade-in">Como funciona a Escola de Profetas?</h2>
+            <div class="grid-entregaveis">
+                <div class="card fade-in">
+                    <div class="card-icon">🔥</div>
+                    <h3>Aulas Gravadas</h3>
+                    <p>Conteúdo denso e direto ao ponto para você assistir quando e onde quiser.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔥</div>
+                    <h3>Exercícios Práticos</h3>
+                    <p>Ativações reais para treinar a sua percepção e entrega profética.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔥</div>
+                    <h3>1 Ano de Acesso</h3>
+                    <p>Tempo de sobra para rever as aulas, absorver o ensino e amadurecer o dom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oferta">
+        <div class="container fade-in">
+            <h2>Assuma o seu lugar no <span class="highlight-fire">ofício profético.</span></h2>
+            <p>O acesso à plataforma é imediato assim que a sua inscrição for confirmada.</p>
+            
+            <div class="price-box">
+                <span class="price-currency">R$</span>
+                <span class="price-value">197,00</span> 
+            </div>
+
+            <a href="https://pay.kiwify.com.br/lhH7ZkO" class="cta-btn">🔥 GARANTIR MEU ACESSO IMEDIATO</a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer para animações de fade-in ao scrollar a página
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Para a animação ocorrer apenas na primeira vez
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
