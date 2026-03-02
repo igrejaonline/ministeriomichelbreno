@@ -146,16 +146,21 @@
             color: #FFFFFF;
         }
 
-        /* AJUSTE REALIZADO AQUI PARA REMOVER CONTORNO QUADRADO */
+        /* AJUSTE REALIZADO AQUI PARA AVANÇAR O CÍRCULO DOURADO PARA DENTRO DA IMAGEM */
         .hero-image {
             width: 100%;
             max-width: 400px;
             border-radius: 50%; /* Garante formato redondo perfeito */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             position: relative;
-            /* Garante que a imagem não vaze o container redondo */
+            /* Garante que a imagem preencha o container */
             object-fit: cover; 
             aspect-ratio: 1/1;
+            /* Moldura e Sombra Combinadas para Overlay */
+            border: 6px solid var(--gold); /* Borda Externa Visível */
+            padding: 0; /* REMOVIDO: Traz a borda para o limite da imagem */
+            /* UPDATED: Adicionado sombra interna 'inset' dourada de 15px que invade a imagem */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), /* Sombra externa (keep) */
+                        inset 0 0 0 15px var(--gold); /* Overlay Dourado Interno */
         }
 
         /* Efeito de brilho sutil atrás da imagem */
