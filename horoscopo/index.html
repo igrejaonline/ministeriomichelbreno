@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentoria Tronos Malignos | Escola de Libertadores</title>
+    <title>Tronos Malignos: Horóscopo</title>
+    
+    <!-- Favicon (Ícone da Aba) -->
+    <link rel="icon" type="image/jpeg" href="https://ministeriomichelbreno.com.br/img/logo.jpeg">
+
+    <!-- Contador GoatCounter -->
+    <script data-goatcounter="https://ministeriomichelbreno.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     
     <!-- Tipografia Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +55,7 @@
             font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
         .container {
@@ -60,6 +67,35 @@
         h1, h2, h3 {
             font-family: var(--font-title);
             font-weight: 700;
+        }
+
+        /* =========================================
+           BOTÃO VOLTAR (CANTO SUPERIOR ESQUERDO)
+           ========================================= */
+        .btn-back {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(18, 18, 22, 0.5);
+        }
+
+        .btn-back:hover {
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+            background: rgba(18, 18, 22, 0.8);
         }
 
         /* =========================================
@@ -119,6 +155,17 @@
             background: rgba(158, 27, 27, 0.1);
         }
 
+        .hero-cover {
+            display: block;
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 2.5rem auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .hero h1 {
             font-size: clamp(2.2rem, 5vw, 4rem);
             line-height: 1.1;
@@ -141,7 +188,7 @@
         }
 
         /* =========================================
-           SEÇÃO: O PROBLEMA Oculto
+           SEÇÃO: O PROBLEMA OCULTO
            ========================================= */
         .problem-section {
             padding: 5rem 0;
@@ -291,13 +338,30 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        @media (max-width: 768px) {
+            .btn-back {
+                position: static;
+                display: inline-flex;
+                margin: 1rem 0 0 2rem;
+            }
+            .hero {
+                padding-top: 4rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Botão Voltar no canto superior esquerdo -->
+    <a href="https://ministeriomichelbreno.com.br/" class="btn-back">← Voltar</a>
+
     <!-- HERO / CAPA DA PÁGINA DE VENDAS -->
     <header class="hero container">
         <div class="tag-live">Alta Estratégia Espiritual</div>
+        
+        <img src="https://ministeriomichelbreno.com.br/img/horoscopo.webp" alt="Capa Tronos Malignos" class="hero-cover">
+        
         <h1>
             Quebre o Grilhão do seu Caráter e 
             <span>Ative o Governo de Deus na sua Vida</span>
@@ -305,10 +369,9 @@
         <p>
             Você sabia que a Astrologia mascara demônios territoriais como meros "traços de personalidade"? Descubra como romper o aprisionamento do mapa astral e assumir sua verdadeira identidade profética.
         </p>
-        <a href="#checkout" class="btn-cta">Quero Garantir Minha Vaga</a>
     </header>
 
-    <!-- O PROBLEMA (POR QUE O ALUNO PRECISA DISSO) -->
+    <!-- O PROBLEMA -->
     <section class="problem-section">
         <div class="container reveal">
             <div class="section-header">
@@ -325,7 +388,7 @@
         </div>
     </section>
 
-    <!-- A SOLUÇÃO (O CONTEÚDO DO CURSO) -->
+    <!-- A SOLUÇÃO -->
     <section class="solution-section container reveal">
         <div class="section-header">
             <h2>A Substituição: O Governo das 12 Tribos</h2>
@@ -338,17 +401,13 @@
                 <p>Saia da passividade do destino e passe a operar pelos princípios do Reino. Cada tribo de Israel carrega uma unção e uma arma de guerra específica para o Corpo de Cristo.</p>
             </div>
             <div class="solution-card">
-                <h3>Batalha Territorial</h3>
-                <p>Aprenda a identificar os ataques espirituais e saiba exatamente quais armas utilizar para neutralizar a atuação das trevas em cada área da sua vida.</p>
-            </div>
-            <div class="solution-card">
                 <h3>Liberdade Emocional</h3>
                 <p>Quebre o peso espiritual do passado, rejeite as heranças de temperamentos destruidores e caminhe sob uma atmosfera de clareza e autoridade profética.</p>
             </div>
         </div>
     </section>
 
-    <!-- O QUE ELE VAI RECEBER (MÓDULOS / BENEFÍCIOS) -->
+    <!-- O QUE ELE VAI RECEBER -->
     <section class="modules-section">
         <div class="container reveal">
             <div class="section-header">
@@ -358,9 +417,9 @@
 
             <ul class="features-list">
                 <li><strong>Mapeamento de Alta Estratégia:</strong> Entenda a engrenagem oculta por trás do zodíaco e desative as portas de entrada.</li>
-                <li><strong>Ativação de Unção Profética:</strong> Como se posicionar no Corpo de Cristo operando sob a autoridade das Tribos e não sob julgo carnal.</li>
-                <li><strong>BÔNUS EXCLUSIVO - Cronograma de Alerta Anual:</strong> Um guia prático mês a mês detalhando quais os principais principados atuam em cada época do ano e as armas exatas para proteger sua casa.</li>
-                <li><strong>Acesso Vitalício:</strong> Assista de onde quiser, quando quiser, com atualizações inclusas.</li>
+                <!-- 2. Item adicionado mantendo a formatação padrão da lista -->
+                <li><strong>Video aula detalhada + PDF</strong></li>
+                <li><strong>BÔNUS EXCLUSIVO - Cronograma de Alerta Anual:</strong> Guia prático detalhando quais os principais principados atuam em cada época do ano e as armas exatas para proteger sua casa.</li>
             </ul>
         </div>
     </section>
@@ -374,18 +433,19 @@
 
         <div class="price-container">
             <span class="old-price">De R$ 497,00</span>
-            <span class="new-price">R$ 197,00</span>
-            <p style="margin-top: 1rem; color: var(--color-text-muted);">ou em até 12x no cartão</p>
+            <!-- 6. Preço alterado para R$ 50,00 -->
+            <span class="new-price">R$ 50,00</span>
+            <p style="margin-top: 1rem; color: var(--color-text-muted);">ou em até 5x no cartão</p>
         </div>
 
-        <a href="https://ministeriomichelbreno.com.br/futebol/" class="btn-cta" target="_blank">Ativar Minha Identidade Agora</a>
+        <!-- 1. Link do botão de CTA devidamente alterado para a Kiwify -->
+        <a href="https://pay.kiwify.com.br/9i4y0iM" class="btn-cta" target="_blank">Ativar Minha Identidade Agora</a>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Rodapé Oficial -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Escola de Libertadores. Todos os direitos reservados.</p>
-            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">Desenvolvido com foco em Alta Performance Espiritual e Web.</p>
+            <p>© 2026 Ministério Apostólico Michel Breno. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -407,7 +467,6 @@
         }
 
         window.addEventListener("scroll", reveal);
-        // Executa uma vez no início caso o usuário já dê F5 no meio da página
         window.addEventListener("load", reveal);
     </script>
 </body>
