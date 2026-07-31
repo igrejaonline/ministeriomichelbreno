@@ -145,20 +145,24 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   object-fit: cover; 
 }
 
-/* CSS ESPECÍFICO PARA LIVROS E CURSOS (ANTIGO LANÇAMENTO) */
-#lancamento .card {
+/* CSS ESPECÍFICO PARA LIVROS E CURSOS (ANTIGO LANÇAMENTO) E AGENDA */
+#lancamento .card,
+#agenda .card {
     max-width: 350px;
     margin: 0 auto;
-    /* Adicionando Glow Dourado */
+    /* Glow Dourado */
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 0 50px rgba(212, 175, 55, 0.3);
     border: 2px solid var(--dourado);
     display: flex;
     flex-direction: column;
 }
-#lancamento .card img {
-    height: auto; /* Sobrescreve a altura fixa para exibir a capa por completo */
-    display: block; /* Remove o espaço em branco na parte inferior da moldura */
+#lancamento .card img,
+#agenda .card img {
+    height: auto; /* Exibe imagem completa */
+    display: block; 
+    max-width: 100%; /* Responsividade interna */
 }
+
 /* Ajuste específico para fazer a imagem do horóscopo preencher toda a moldura */
 #lancamento .card img[src*="horoscopo"] {
     height: 100%;
@@ -357,11 +361,14 @@ footer{
   </div>
 </section>
 
-<!-- 2. AGENDA ONLINE (APENAS IMAGEM) -->
+<!-- 2. AGENDA ONLINE (APENAS IMAGEM REDIMENSIONADA) -->
 <section id="agenda">
   <h2 class="title">Agenda Online</h2>
   <div style="text-align: center;">
-    <img src="https://ministeriomichelbreno.com.br/img/prog.webp" alt="Programação Agenda Online" style="max-width: 100%; height: auto; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.2);">
+    <!-- Adicionada classe .card para herdar tamanho e glow dos livros, garantindo responsividade -->
+    <div class="card">
+      <img src="https://ministeriomichelbreno.com.br/img/prog.webp" alt="Programação Agenda Online">
+    </div>
   </div>
 </section>
 
@@ -376,6 +383,7 @@ footer{
         <p>Acesse o treinamento</p>
       </div>
     </a>
+    <!-- NOVO CARD ADICIONADO -->
     <a href="https://ministeriomichelbreno.com.br/virtuosa" target="_blank" class="card">
       <img src="https://ministeriomichelbreno.com.br/virtuosa/virtuosa.webp" alt="Curso Mulher Virtuosa" class="img-top">
       <div class="card-info">
@@ -406,7 +414,7 @@ footer{
   </div>
 </section>
 
-<!-- BLOCO LIVROS E CURSOS (TÍTULO ALTERADO) -->
+<!-- BLOCO LIVROS E CURSOS -->
 <section id="lancamento">
   <h2 class="title">Livros e cursos</h2>
   <div class="grid-cards" style="justify-items: center;">
