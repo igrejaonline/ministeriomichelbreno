@@ -150,43 +150,47 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 #livro .card,
 #agenda .card {
     max-width: 350px;
+    width: 100%;
     margin: 0 auto;
     /* Glow Dourado */
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 0 50px rgba(212, 175, 55, 0.3);
     border: 2px solid var(--dourado);
     display: flex;
     flex-direction: column;
-}
-#lancamento .card img,
-#livro .card img,
-#agenda .card img {
-    height: auto; /* Exibe imagem completa */
-    display: block; 
-    max-width: 100%; /* Responsividade interna */
+    overflow: hidden;
 }
 
-/* Ajuste específico para fazer a imagem do horóscopo preencher toda a moldura */
-#lancamento .card img[src*="horoscopo"] {
-    height: 100%;
-    object-fit: cover;
+#livro .card img,
+#agenda .card img {
+    height: auto; 
+    display: block; 
+    max-width: 100%; 
+}
+
+/* AJUSTE DOS CARDS DA SEÇÃO CURSOS (TAMANHO IGUAL E PREENCHIMENTO PERFEITO) */
+#lancamento .card img {
     width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
 }
 
 /* CSS ESPECÍFICO PARA ESCOLAS (CARDS REDONDOS) */
 #escolas .grid-cards {
-  justify-items: center; /* Centraliza os círculos nas colunas */
+  justify-items: center; 
 }
 #escolas .card {
   border-radius: 50%;
-  aspect-ratio: 1 / 1; /* Garante que seja um círculo perfeito */
+  aspect-ratio: 1 / 1; 
   width: 100%;
-  max-width: 280px; /* Tamanho máximo do círculo */
+  max-width: 280px; 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Texto no fundo */
+  justify-content: flex-end; 
   align-items: center;
   position: relative;
-  border: 2px solid var(--dourado); /* Realça o formato redondo */
+  border: 2px solid var(--dourado); 
 }
 #escolas .card img {
   position: absolute;
@@ -202,20 +206,20 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   z-index: 1;
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   width: 100%;
-  padding-bottom: 35px; /* Espaço do fundo do círculo */
+  padding-bottom: 35px; 
   padding-top: 20px;
-  border-bottom-left-radius: 50%; /* Acompanha a curva */
+  border-bottom-left-radius: 50%; 
   border-bottom-right-radius: 50%;
 }
 
 /* CSS ESPECÍFICO PARA BÍBLIA (CARD QUADRADO) */
 #biblia .card {
-    aspect-ratio: 1 / 1; /* Garante que seja quadrado */
+    aspect-ratio: 1 / 1; 
     max-width: 350px;
     margin: 0 auto;
 }
 #biblia .card img {
-    height: 100%; /* Ocupa toda a altura do quadrado */
+    height: 100%; 
 }
 
 .img-center { object-position: center !important; } 
@@ -405,11 +409,7 @@ footer{
   <div class="grid-cards" style="justify-items: center;">
     <!-- Card Desvendando os Sonhos -->
     <a href="https://ministeriomichelbreno.com.br/sonhos/" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.webp" alt="Curso Desvendando os Sonhos" class="img-top">
-      <div class="card-info">
-        <h4>Desvendando os Sonhos</h4>
-        <p>Acesse o treinamento</p>
-      </div>
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.webp" alt="Curso Desvendando os Sonhos">
     </a>
     <!-- Card Futebol -->
     <a href="https://ministeriomichelbreno.com.br/futebol/" target="_blank" class="card">
