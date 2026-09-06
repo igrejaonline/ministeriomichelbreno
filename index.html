@@ -145,8 +145,9 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
   object-fit: cover; 
 }
 
-/* CSS ESPECÍFICO PARA LIVROS E CURSOS (ANTIGO LANÇAMENTO) E AGENDA */
+/* CSS ESPECÍFICO PARA LIVRO, CURSOS E AGENDA */
 #lancamento .card,
+#livro .card,
 #agenda .card {
     max-width: 350px;
     margin: 0 auto;
@@ -157,6 +158,7 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
     flex-direction: column;
 }
 #lancamento .card img,
+#livro .card img,
 #agenda .card img {
     height: auto; /* Exibe imagem completa */
     display: block; 
@@ -214,16 +216,6 @@ section{ padding: 60px 20px; max-width: 1100px; margin: auto; }
 }
 #biblia .card img {
     height: 100%; /* Ocupa toda a altura do quadrado */
-}
-
-/* CSS ESPECÍFICO PARA FORMAÇÃO (MANTER DIMENSÕES ORIGINAIS DOS CARDS) */
-#formacao .grid-cards {
-    justify-content: center;
-}
-#formacao .card {
-    max-width: 350px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .img-center { object-position: center !important; } 
@@ -361,36 +353,13 @@ footer{
   </div>
 </section>
 
-<!-- 2. AGENDA ONLINE (APENAS IMAGEM REDIMENSIONADA) -->
+<!-- 2. AGENDA ONLINE -->
 <section id="agenda">
   <h2 class="title">Agenda Online</h2>
   <div style="text-align: center;">
-    <!-- Adicionada classe .card para herdar tamanho e glow dos livros, garantindo responsividade -->
     <div class="card">
       <img src="https://ministeriomichelbreno.com.br/img/prog.webp" alt="Programação Agenda Online">
     </div>
-  </div>
-</section>
-
-<!-- 3. FORMAÇÃO ONLINE -->
-<section id="formacao">
-  <h2 class="title">Formação Online</h2>
-  <div class="grid-cards">
-    <a href="https://ministeriomichelbreno.com.br/sonhos/" target="_blank" class="card">
-      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Curso Desvendando os Sonhos" class="img-top">
-      <div class="card-info">
-        <h4>Desvendando os Sonhos</h4>
-        <p>Acesse o treinamento</p>
-      </div>
-    </a>
-    <!-- NOVO CARD ADICIONADO -->
-    <a href="https://ministeriomichelbreno.com.br/virtuosa" target="_blank" class="card">
-      <img src="https://ministeriomichelbreno.com.br/virtuosa/virtuosa.webp" alt="Curso Mulher Virtuosa" class="img-top">
-      <div class="card-info">
-        <h4>Mulher Virtuosa</h4>
-        <p>Acesse o treinamento</p>
-      </div>
-    </a>
   </div>
 </section>
 
@@ -398,8 +367,13 @@ footer{
 <section id="escolas">
   <h2 class="title">Escolas</h2>
   <div class="grid-cards">
+    <!-- Card Escola de Libertadores -->
     <a href="https://ministeriomichelbreno.com.br/libertadores/" target="_blank" class="card">
       <img src="https://ministeriomichelbreno.com.br/img/libertadores.webp" alt="Escola de Libertadores">
+    </a>
+    <!-- Card Escola de Profetas -->
+    <a href="https://ministeriomichelbreno.com.br/profetas/" target="_blank" class="card">
+      <img src="https://ministeriomichelbreno.com.br/img/profetas.webp" alt="Escola de Profetas">
     </a>
   </div>
 </section>
@@ -414,13 +388,28 @@ footer{
   </div>
 </section>
 
-<!-- BLOCO LIVROS E CURSOS -->
-<section id="lancamento">
-  <h2 class="title">Livros e cursos</h2>
+<!-- BLOCO LIVRO (CRIADO APÓS BÍBLIA) -->
+<section id="livro">
+  <h2 class="title">LIVRO</h2>
   <div class="grid-cards" style="justify-items: center;">
     <!-- Card Manual do Libertador -->
     <a href="https://ministeriomichelbreno.com.br/manualdolibertador/" target="_blank" class="card">
       <img src="https://ministeriomichelbreno.com.br/manualdolibertador/capa.webp" alt="Manual do Libertador">
+    </a>
+  </div>
+</section>
+
+<!-- BLOCO CURSOS (ANTIGO LANÇAMENTO) -->
+<section id="lancamento">
+  <h2 class="title">CURSOS</h2>
+  <div class="grid-cards" style="justify-items: center;">
+    <!-- Card Desvendando os Sonhos -->
+    <a href="https://ministeriomichelbreno.com.br/sonhos/" target="_blank" class="card">
+      <img src="https://igrejaonline.github.io/ministeriomichelbreno/img/desvendando.jpeg" alt="Curso Desvendando os Sonhos" class="img-top">
+      <div class="card-info">
+        <h4>Desvendando os Sonhos</h4>
+        <p>Acesse o treinamento</p>
+      </div>
     </a>
     <!-- Card Futebol -->
     <a href="https://ministeriomichelbreno.com.br/futebol/" target="_blank" class="card">
@@ -433,7 +422,7 @@ footer{
   </div>
 </section>
 
-<!-- 5. PARTICIPE DOS CULTOS -->
+<!-- PARTICIPE DOS CULTOS -->
 <section id="contato" style="text-align: center; padding-bottom: 0;">
   <h2 class="title">Participe dos Cultos</h2>
   <div class="cta">
@@ -455,7 +444,7 @@ footer{
   </div>
 </section>
 
-<!-- 6. NOSSA MISSÃO -->
+<!-- NOSSA MISSÃO -->
 <section id="sobre">
   <h2 class="title">Nossa Missão</h2>
   <div class="pilares-grid">
@@ -472,7 +461,7 @@ footer{
   </div>
 </section>
 
-<!-- 7. CONTRIBUA COM O REINO -->
+<!-- CONTRIBUA COM O REINO -->
 <section id="contribua">
   <div class="pix-box">
     <h2 class="title">Contribua com o Reino</h2>
@@ -484,7 +473,7 @@ footer{
   </div>
 </section>
 
-<!-- 8. DOWNLOADS -->
+<!-- DOWNLOADS -->
 <section id="biblioteca" style="text-align: center;">
     <div style="background: var(--glass); padding: 40px 20px; border-radius: 15px; border: 1px solid rgba(212,175,55,0.2); max-width: 800px; margin: 0 auto;">
         <h2 class="title" style="margin-bottom: 20px;">Downloads</h2>
